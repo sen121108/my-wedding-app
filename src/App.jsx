@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Menu from "./components/Menu/Menu";
+import Menu from "./Menu/Menu";
 
-import Invitation from "./components/Top/Invitation";
-import Schedule from "./components/Top/Schedule";
-import AccessMap from "./components/Top/AccessMap";
+import Invitation from "./Top/Invitation";
+import Schedule from "./Top/Schedule";
+import AccessMap from "./Top/AccessMap";
 
-import Seating from "./components/Seating/Seating";
-import Videos from "./components/Videos/Videos";
-import Quiz from "./components/Profile/Quiz";
+import Seating from "./Seating/Seating";
+import Videos from "./Videos/Videos";
+import Quiz from "./Profile/Quiz";
 
 // 表示/フェード時間
 const INTRO_SHOW_MS = 2600;

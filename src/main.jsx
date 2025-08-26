@@ -3,13 +3,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App.jsx";
-import RsvpEntryPage from "./components/Entry/RsvpEntryPage.jsx";
-import RsvpEntry from "./components/Entry/RsvpEntry.jsx";
-import RcvpEntryDetail from "./components/Entry/RcvpEntryDetail.jsx";
-import SendGift from "./components/Entry/SendGift.jsx";
-import ReceiveMoney from "./components/Entry/ReceiveMoney.jsx";
+import RsvpEntryPage from "./Entry/RsvpEntryPage.jsx";
+import RsvpEntry from "./Entry/RsvpEntry.jsx";
+import RcvpEntryDetail from "./Entry/RcvpEntryDetail.jsx";
+import SendGift from "./Entry/SendGift.jsx";
+import ReceiveMoney from "./Entry/ReceiveMoney.jsx";
 import "./index.css";
-import RcvpConfirm from "./components/Entry/RcvpConfirm.jsx";
+import RcvpConfirm from "./Entry/RcvpConfirm.jsx";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
