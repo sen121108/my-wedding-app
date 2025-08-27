@@ -8,7 +8,9 @@ import AccessMap from "./Top/AccessMap";
 
 import Seating from "./Seating/Seating";
 import Videos from "./Videos/Videos";
-import Quiz from "./Profile/Quiz";
+
+import Profile from "./Profile/pages/IndexPage";
+
 
 // 表示/フェード時間
 const INTRO_SHOW_MS = 2600;
@@ -67,6 +69,12 @@ export default function App() {
         </div>
       </section>
 
+      <section id="profile" className="min-h-screen pt-20 bg-brand-500">
+        <div className="max-w-3xl mx-auto px-6 py-10">
+          <Profile />
+        </div>
+      </section>
+
       <section id="top-schedule" className="min-h-screen pt-20 bg-brand-500">
         <div className="max-w-3xl mx-auto px-6 py-10">
           <Schedule />
@@ -88,12 +96,6 @@ export default function App() {
       <section id="videos" className="min-h-screen pt-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 py-10">
           <Videos />
-        </div>
-      </section>
-
-      <section id="quiz" className="min-h-screen pt-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <Quiz />
         </div>
       </section>
     </div>

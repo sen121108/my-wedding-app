@@ -4,17 +4,15 @@ import { Link, useLocation } from "react-router-dom";
 const items = [
   { id: "entry",          label: "出欠・ご祝儀", external: true, highlight:true },
   { id: "top-invitation", label: "招待状",},
+  { id: "profile",        label: "プロフィール" },
   { id: "top-schedule",   label: "スケジュール" },
   { id: "top-map",        label: "アクセス" },
   { id: "seating",        label: "席次表" },
   { id: "videos",         label: "動画" },
-  { id: "quiz",           label: "クイズ" },
 ];
 
 export default function Menu() {
   const loc = useLocation();
-  const isEntry = loc.pathname.startsWith("/entry");
-
   const cls = (highlight) =>
     `cursor-pointer text-sm md:text-base transition ${
       highlight ? "font-bold text-brand-600 hover:text-brand-700"
