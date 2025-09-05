@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Menu from "./Menu/Menu";
 
-import Invitation from "./Top/Invitation";
-import Schedule from "./Top/Schedule";
-import AccessMap from "./Top/AccessMap";
+import Invitation from "./features/intro/Invitation";
+import Schedule from "./features/Schedule/Schedule";
+import AccessMap from "./features/AccessMap/AccessMap";
 
 import Seating from "./Seating/Seating";
 import Videos from "./Videos/Videos";

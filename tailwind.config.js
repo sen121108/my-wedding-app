@@ -3,6 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        logo: ['"Playfair Display"', 'Noto Serif JP', 'serif'], // タイトル用
+        body: ['"Noto Sans JP"', 'sans-serif'],                // 本文用
+      },
       colors: {
         brand: {
           // ベージュ基調（必要に応じて微調整OK）
