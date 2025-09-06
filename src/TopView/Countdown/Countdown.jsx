@@ -19,14 +19,57 @@ const pad2 = (n) => String(n).padStart(2, "0");
 function diffParts(targetMs, nowMs) {
   let diff = Math.max(0, targetMs - nowMs);
   const sec = Math.floor(diff / 1000);
-
   const days = Math.floor(sec / 86400);
   const hours = Math.floor((sec % 86400) / 3600);
   const minutes = Math.floor((sec % 3600) / 60);
   const seconds = sec % 60;
-
   return { days, hours, minutes, seconds, reached: sec === 0 };
 }
+
+// --- 見た目用の部品 ------------------------------------
+function DayCircle({ value, label = "DAYS" }) {
+  const len = String(value).length;
+  const sizeClass =
+    len >= 4 ? "text-5xl md:text-6xl" :
+    len === 3 ? "text-6xl md:text-7xl" :
+                "text-7xl md:text-8xl";
+
+  return (
+    <div className="relative flex flex-col items-center justify-center">
+      <div className="rounded-full ring-1 ring-gray-200/50 bg-white/60 w-44 h-44 md:w-52 md:h-52 flex flex-col items-center justify-center">
+        {/* 数字 */}
+        <span
+          className={`font-serif ${sizeClass} font-semibold text-gray-800 tabular-nums leading-tight`}
+        >
+          {value}
+        </span>
+        {/* ラベル（円の中に小さく表示） */}
+        <span className="mt-1 text-xs md:text-sm tracking-[0.25em] text-gray-500 uppercase">
+          {label}
+        </span>
+      </div>
+
+      {/* 外周の薄いリング */}
+      <div className="absolute inset-0 rounded-full ring-1 ring-gray-100/40 scale-[1.06] pointer-events-none" />
+    </div>
+  );
+}
+
+
+function UnitBox({ value, label }) {
+  return (
+    <div className="bg-white/60 rounded-2xl shadow-sm ring-1 ring-gray-100 px-6 py-5 md:px-7 md:py-6 text-center">
+      <div className="text-3xl md:text-4xl font-semibold text-gray-800 font-serif tabular-nums">
+        {value}
+      </div>
+      <div className="mt-2 text-[10px] md:text-xs tracking-[0.25em] text-gray-500 uppercase">
+        {label}
+      </div>
+    </div>
+  );
+}
+
+// --------------------------------------------------------
 
 export default function Countdown() {
   const { targetISO, title, labels, reachedMessage } = countdownConfig;
@@ -42,47 +85,32 @@ export default function Countdown() {
   }, []);
 
   return (
-    <article className="max-w-3xl mx-auto text-center">
-      <h3 className="text-3xl md:text-4xl font-serif tracking-wide text-gray-800">
+    <article className="max-w-4xl mx-auto text-center" aria-live="polite">
+      <h3 className="text-8xl md:text-4xl font-serif tracking-wide text-gray-800">
         {title}
       </h3>
 
       <FloralDivider />
 
-      {/* 到達後のメッセージ */}
       {reached ? (
         <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
           {reachedMessage}
         </p>
       ) : (
         <>
-          {/* 残り時間カード */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <TimeBox value={days} label={labels.days} />
-            <TimeBox value={pad2(hours)} label={labels.hours} />
-            <TimeBox value={pad2(minutes)} label={labels.minutes} />
-            <TimeBox value={pad2(seconds)} label={labels.seconds} />
+          {/* 上段：Days を大きな円で */}
+          <div className="flex justify-center mb-8 md:mb-10">
+            <DayCircle value={days} label={labels.days} />
           </div>
 
-          {/* 目標日時の表示 */}
-          <p className="mt-8 text-sm text-gray-500">
-            目標日時：{new Date(targetMs).toLocaleString("ja-JP", { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })}
-          </p>
+          {/* 下段：Hours / Minutes / Seconds を横並び（モバイル2列→PC3列） */}
+          <div className="grid grid-cols-3 gap-3 md:gap-6">
+            <UnitBox value={pad2(hours)} label={labels.hours} />
+            <UnitBox value={pad2(minutes)} label={labels.minutes} />
+            <UnitBox value={pad2(seconds)} label={labels.seconds} />
+          </div>
         </>
       )}
     </article>
-  );
-}
-
-function TimeBox({ value, label }) {
-  return (
-    <div className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 p-6 md:p-7">
-      <div className="text-4xl md:text-5xl font-semibold text-gray-800 font-serif">
-        {value}
-      </div>
-      <div className="mt-2 text-xs md:text-sm tracking-widest text-gray-500 uppercase">
-        {label}
-      </div>
-    </div>
   );
 }

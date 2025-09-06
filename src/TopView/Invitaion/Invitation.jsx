@@ -6,7 +6,6 @@ const CONFIG = {
   dateTextJP: "2026年10月10日(土)",
   ceremonyISO: "2026-10-10T14:00:00+09:00",
   heroImage: "/image/hero.jpg",
-  rsvpExternalUrl: "/entry",
 };
 
 export default function Invitation() {
@@ -21,8 +20,6 @@ export default function Invitation() {
         imageSrc={CONFIG.heroImage}
         bottomRightBadge={formatDateBadge(CONFIG.ceremonyISO)}
         countdownTargetMs={targetMs}
-        ctaText="招待状に回答する"
-        ctaHref={CONFIG.rsvpExternalUrl}
       />
     </div>
   );

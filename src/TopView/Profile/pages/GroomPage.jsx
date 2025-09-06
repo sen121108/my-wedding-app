@@ -1,6 +1,5 @@
 import PersonCard from "../components/PersonCard";
-import Gallery from "../components/Gallery";
-import { PAGE_TEXT, groom, groomGallery } from "../../../data/Profile/profile";
+import { PAGE_TEXT, groom } from "../../../data/Profile/profile";
 
 export default function GroomPage() {
   return (
@@ -19,9 +18,6 @@ export default function GroomPage() {
         <h3 className="mt-8">{PAGE_TEXT.galleryTitle}</h3>
       </div>
 
-      <div className="mt-4">
-        <Gallery images={groomGallery} />
-      </div>
     </main>
   );
 }

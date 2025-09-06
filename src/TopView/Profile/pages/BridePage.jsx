@@ -1,6 +1,5 @@
 import PersonCard from "../components/PersonCard";
-import Gallery from "../components/Gallery";
-import { PAGE_TEXT, bride, brideGallery } from "../../../data/Profile/profile";
+import { PAGE_TEXT, bride } from "../../../data/Profile/profile";
 
 export default function BridePage() {
   return (
@@ -17,10 +16,6 @@ export default function BridePage() {
         </article>
 
         <h3 className="mt-8">{PAGE_TEXT.galleryTitle}</h3>
-      </div>
-
-      <div className="mt-4">
-        <Gallery images={brideGallery} />
       </div>
     </main>
   );

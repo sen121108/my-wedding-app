@@ -10,7 +10,7 @@ const countdownConfig = {
   reachedMessage: "本日は誠にありがとうございます。どうぞお楽しみください！",
 
   // ラベル（必要なら英語などに差し替え可）
-  labels: { days: "日", hours: "時間", minutes: "分", seconds: "秒" },
+  labels: { days: "DAYS", hours: "HOUES", minutes: "MINUTES", seconds: "SECONDS" },
 };
 
 export default countdownConfig;

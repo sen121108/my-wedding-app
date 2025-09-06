@@ -13,8 +13,6 @@ export default function Intro({
   imageSrc = "/image/hero.jpeg",
   videoSrc = "",
   overlay = 0.45,
-  ctaText,
-  ctaHref,
 }) {
   const [bgLoaded, setBgLoaded] = React.useState(false);
 
@@ -70,17 +68,6 @@ export default function Intro({
             {dateLabel}
           </p>
 
-          {/* CTA（normal向け） */}
-          {ctaText && ctaHref && (
-            <div className="mt-6">
-              <a
-                href={ctaHref}
-                className="inline-flex items-center rounded-full bg-brand-500 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-brand-600 transition"
-              >
-                {ctaText}
-              </a>
-            </div>
-          )}
         </div>
       </div>
 
