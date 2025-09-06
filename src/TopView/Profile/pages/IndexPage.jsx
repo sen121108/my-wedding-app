@@ -1,6 +1,6 @@
 import PersonCard from "../components/PersonCard";
 import Timeline from "./Timeline";
-import { PAGE_TEXT, bride, groom, history } from "../../../data/Profile";
+import { PAGE_TEXT, bride, groom, history } from "../../../data/Profile/profile";
 
 export default function IndexPage() {
   return (

@@ -3,10 +3,11 @@ import Schedule from "./TopView/Schedule/Schedule";
 import AccessMap from "./TopView/AccessMap/AccessMap";
 
 import Seating from "./TopView/Seating/Seating";
-import Videos from "./Videos/Videos";
+import Videos from "./TopView/VideoView/Videos";
 
 import Profile from "./TopView/Profile/pages/IndexPage";
 import EntryMessage from "./TopView/Message/EntryMessage";
+import EntryCountdown from "./TopView/Countdown/EntryCountdown";
 
 export default function App() {
   return (
@@ -17,9 +18,15 @@ export default function App() {
         </div>
       </section>
 
-      <section id="Message" className="min-h-screen pt-20">
+    <section id="Message" className="min-h-screen pt-20 bg-[#faf7f3]">
+      <div className="max-w-4xl mx-auto px-6">
+        <EntryMessage />
+      </div>
+    </section>
+
+     <section id="countdown" className="min-h-screen pt-20">
         <div className="max-w-3xl mx-auto px-6 py-10">
-          <EntryMessage />
+          <EntryCountdown />
         </div>
       </section>
 
