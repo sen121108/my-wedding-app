@@ -1,6 +1,6 @@
 import PersonCard from "../components/PersonCard";
 import Gallery from "../components/Gallery";
-import { PAGE_TEXT, groom, groomGallery } from "../data";
+import { PAGE_TEXT, groom, groomGallery } from "../../../data/Profile";
 
 export default function GroomPage() {
   return (

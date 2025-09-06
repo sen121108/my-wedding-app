@@ -1,18 +1,25 @@
-import Invitation from "./features/intro/Invitation";
-import Schedule from "./features/Schedule/Schedule";
-import AccessMap from "./features/AccessMap/AccessMap";
+import Invitation from "./TopView/Invitaion/Invitation";
+import Schedule from "./TopView/Schedule/Schedule";
+import AccessMap from "./TopView/AccessMap/AccessMap";
 
-import Seating from "./Seating/Seating";
+import Seating from "./TopView/Seating/Seating";
 import Videos from "./Videos/Videos";
 
-import Profile from "./Profile/pages/IndexPage";
+import Profile from "./TopView/Profile/pages/IndexPage";
+import EntryMessage from "./TopView/Message/EntryMessage";
 
 export default function App() {
   return (
     <div className="font-sans text-gray-800 animate-fadeInSlow bg-brand-500">
       <section id="top-invitation" className="min-h-screen">
-        <div className="max-w-3xl mx-auto">
+        <div className=" mx-auto">
           <Invitation/>
+        </div>
+      </section>
+
+      <section id="Message" className="min-h-screen pt-20">
+        <div className="max-w-3xl mx-auto px-6 py-10">
+          <EntryMessage />
         </div>
       </section>
 

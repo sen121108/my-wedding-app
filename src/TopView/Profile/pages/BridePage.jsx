@@ -1,6 +1,6 @@
 import PersonCard from "../components/PersonCard";
 import Gallery from "../components/Gallery";
-import { PAGE_TEXT, bride, brideGallery } from "../data";
+import { PAGE_TEXT, bride, brideGallery } from "../../../data/Profile";
 
 export default function BridePage() {
   return (

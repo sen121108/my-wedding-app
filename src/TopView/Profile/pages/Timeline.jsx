@@ -1,4 +1,4 @@
-import useIntersectionFadeIn from "./hooks/useIntersectionFadeIn";
+import useIntersectionFadeIn from "../components/hooks/useIntersectionFadeIn";
 
 /**
  * props: items: [{year, title, desc?}]
