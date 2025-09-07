@@ -16,7 +16,7 @@ function FloralDivider({ className = "" }) {
 }
 
 export default function Message() {
-  const { title, lead, paragraphs, sign } = message;
+  const { title, lead, paragraphs} = message;
 
   return (
     <article className="max-w-2xl mx-auto">
@@ -46,14 +46,6 @@ export default function Message() {
 
       {/* 署名 */}
       <FloralDivider />
-      <div className="text-center mt-2">
-        <p className="font-medium text-gray-800">
-          {sign?.groom} <span className="mx-1.5">・</span> {sign?.bride}
-        </p>
-        {sign?.dateLabel && (
-          <p className="text-sm text-gray-500 mt-1">{sign.dateLabel}</p>
-        )}
-      </div>
     </article>
   );
 }

@@ -7,10 +7,10 @@ import React from "react";
  * - 右下バッジ / full 時スクロール誘導 / CTA（normal想定）
  */
 export default function Intro({
-  groom = "Haruto",
-  bride = "Yui",
-  dateLabel = "2025.11.22 Sat",
-  imageSrc = "/image/hero.jpeg",
+  groom = "",
+  bride = "",
+  dateLabel = "",
+  imageSrc = "",
   videoSrc = "",
   overlay = 0.45,
 }) {
@@ -43,7 +43,7 @@ export default function Intro({
           className={[
             "absolute inset-0 bg-center bg-cover",
             bgLoaded ? "opacity-100 blur-0" : "opacity-0 blur-sm",
-            "transition-all duration-3000 ease-out will-change-opacity",
+            "transition-all duration-4000 ease-out will-change-opacity",
           ].join(" ")}
           style={{ backgroundImage: `url(${imageSrc})` }}
         />

@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import Intro from "./Intro";
+import ArchFrame from "../components/ArchFrame";
 const CONFIG = {
   groom: "Kazumasa",
   bride: "Takako",
@@ -12,8 +13,8 @@ export default function Invitation() {
   const targetMs = useMemo(() => new Date(CONFIG.ceremonyISO).getTime(), []);
 
   return (
-    <div className="">
-      <Intro
+    <ArchFrame >
+       <Intro
         groom={CONFIG.groom}
         bride={CONFIG.bride}
         dateLabel={CONFIG.dateTextJP}
@@ -21,8 +22,8 @@ export default function Invitation() {
         bottomRightBadge={formatDateBadge(CONFIG.ceremonyISO)}
         countdownTargetMs={targetMs}
       />
-    </div>
-  );
+   </ArchFrame >
+);
 }
 
 /* ========= ヘルパ ========= */

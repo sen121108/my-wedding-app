@@ -5,14 +5,15 @@ import AccessMap from "./TopView/AccessMap/AccessMap";
 import Seating from "./TopView/Seating/Seating";
 import Videos from "./TopView/VideoView/Videos";
 
-import Profile from "./TopView/Profile/pages/IndexPage";
+import Profile from "./TopView/Profile/ProfileEntry";
 import EntryMessage from "./TopView/Message/EntryMessage";
 import EntryCountdown from "./TopView/Countdown/EntryCountdown";
 import SectionWithBg from "./TopView/components/SectionWitdhBg";
 import GlobalAnswerBar from "./TopView/Answer/GlobalAnswerBar";
+import Gallery from "./TopView/Gallery/Gallery";
 
-const MESSAGE_BG = "/image/message/messageBack.png"; // 例: 紙テクスチャや会場のぼかし写真
-const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; // 例: 紙テクスチャや会場のぼかし写真
+const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; // 
+const GALLERY_BG = "/image/gallery/galleryBg.jpg"; // 
 
 
 export default function App() {
@@ -27,22 +28,14 @@ export default function App() {
         </div>
       </section>
 
-    <section id="Message" className="min-h-screen pt-20 bg-[#faf7f3]">
-      <div className="max-w-4xl mx-auto px-6">
-        <SectionWithBg
-          imageSrc={MESSAGE_BG}
-          overlay={0.55}     // 画像をさらに“薄く”→数値を上げる
-          tint="white"       // 白ベースの淡いトーン
-          className="p-6 md:p-10"
-        >
+    <section id="Message" className="pt-10 bg-[#faf7f3]">
+      <div className="max-w-4xl mx-auto px-6 bg-red-50">
           <EntryMessage />
-        </SectionWithBg>
       </div>
     </section>
 
      <section id="countdown" className="min-h-screen pt-10">
         <div className="mx-auto">
-          
         <SectionWithBg
           imageSrc={COUNTDOWN_BG}
           overlay={0.55}     // 画像をさらに“薄く”→数値を上げる
@@ -54,13 +47,19 @@ export default function App() {
         </div>
       </section>
 
-      <section id="profile" className="min-h-screen pt-20">
-        <div className="max-w-3xl mx-auto px-6 ">
+      <section id="profile" className="">
+        <div className="max-w-3xl mx-auto ">
           <Profile />
         </div>
       </section>
 
-      <section id="top-schedule" className="min-h-screen pt-20 ">
+      <section id="gallery" className="pt-10">
+        <div className="mx-auto">
+        <Gallery />
+        </div>
+      </section>
+
+      <section id="top-schedule" className="">
         <div className="max-w-3xl mx-auto px-6 py-10">
           <Schedule />
         </div>

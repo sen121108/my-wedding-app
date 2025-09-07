@@ -86,7 +86,7 @@ export default function Countdown() {
 
   return (
     <article className="max-w-4xl mx-auto text-center" aria-live="polite">
-      <h3 className="text-8xl md:text-4xl font-serif tracking-wide text-gray-800">
+      <h3 className="text-xl md:text-3xl font-serif tracking-wide text-gray-800">
         {title}
       </h3>
 
