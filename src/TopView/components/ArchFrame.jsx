@@ -9,13 +9,13 @@ import React from "react";
  */
 export default function ArchFrame({ className = "", children }) {
   return (
-    <div className="w-full flex items-center justify-center bg-[#f3efdf]">
+    <div className="w-full flex items-center justify-center bg-[#faf7f3]">
       <div
         className={[
           // サイズ：モバイルは幅90vw、上限680px。比率はだいたい3:4
-          "relative mx-auto w-[90vw] max-w-[680px] aspect-[3/4]",
+          "relative mx-auto w-[100vw] max-w-[680px] ",
           // アーチ：上2つの角を大きく、下はわずかに丸める
-          "rounded-t-[30%] rounded-b-[14px] overflow-hidden",
+          "rounded-t-[50%] rounded-b-[14px] overflow-hidden",
           // 枠線＆薄い影
           "border border-neutral-400/80 shadow-sm",
           className,

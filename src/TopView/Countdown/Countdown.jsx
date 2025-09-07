@@ -58,16 +58,18 @@ function DayCircle({ value, label = "DAYS" }) {
 
 function UnitBox({ value, label }) {
   return (
-    <div className="bg-white/60 rounded-2xl shadow-sm ring-1 ring-gray-100 px-6 py-5 md:px-7 md:py-6 text-center">
+    <div className="bg-white/60 rounded-2xl shadow-sm ring-1 ring-gray-100 px-6 py-5 md:px-7 md:py-6 
+                    flex flex-col items-center justify-center text-center">
       <div className="text-3xl md:text-4xl font-semibold text-gray-800 font-serif tabular-nums">
         {value}
       </div>
-      <div className="mt-2 text-[10px] md:text-xs tracking-[0.25em] text-gray-500 uppercase">
+      <div className="mt-2 text-[10px] tracking-[0.25em] text-gray-500 uppercase">
         {label}
       </div>
     </div>
   );
 }
+
 
 // --------------------------------------------------------
 

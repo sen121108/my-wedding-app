@@ -11,9 +11,10 @@ import EntryCountdown from "./TopView/Countdown/EntryCountdown";
 import SectionWithBg from "./TopView/components/SectionWitdhBg";
 import GlobalAnswerBar from "./TopView/Answer/GlobalAnswerBar";
 import Gallery from "./TopView/Gallery/Gallery";
+import Footer from "./TopView/Footer/Footer";
 
 const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; // 
-const GALLERY_BG = "/image/gallery/galleryBg.jpg"; // 
+const ACCESS_BG = "/image/access/access_BG.jpg"; // 
 
 
 export default function App() {
@@ -22,7 +23,7 @@ export default function App() {
       {/* 全ページ常設（/entry等は設定で自動非表示） */}
       <GlobalAnswerBar />
       
-      <section id="top-invitation" className="min-h-screen">
+      <section id="top-invitation" className="">
         <div className=" mx-auto">
           <Invitation/>
         </div>
@@ -34,7 +35,7 @@ export default function App() {
       </div>
     </section>
 
-     <section id="countdown" className="min-h-screen pt-10">
+     <section id="countdown" className="pt-10">
         <div className="mx-auto">
         <SectionWithBg
           imageSrc={COUNTDOWN_BG}
@@ -47,7 +48,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="profile" className="">
+      <section id="profile" className="pt-10">
         <div className="max-w-3xl mx-auto ">
           <Profile />
         </div>
@@ -60,28 +61,30 @@ export default function App() {
       </section>
 
       <section id="top-schedule" className="">
-        <div className="max-w-3xl mx-auto px-6 py-10">
+        <div className="max-w-3xl px-6 py-10">
           <Schedule />
         </div>
       </section>
 
-      <section id="top-map" className="min-h-screen pt-20">
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <AccessMap />
+      <section id="top-map" className="pt-10">
+        <div className=" mx-auto ">
+            <SectionWithBg
+              imageSrc={ACCESS_BG}
+              overlay={0.55}     // 画像をさらに“薄く”→数値を上げる
+              tint="white"       // 白ベースの淡いトーン
+              className="p-6 md:p-10"
+            >
+              <AccessMap />
+          </SectionWithBg>
         </div>
       </section>
 
-      <section id="seating" className="min-h-screen pt-20">
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <Seating />
+      <section id="footer" className="">
+        <div className="px-6">
+          <Footer />
         </div>
       </section>
 
-      <section id="videos" className="min-h-screen pt-20">
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <Videos />
-        </div>
-      </section>
     </div>
   );
 }
