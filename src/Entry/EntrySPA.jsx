@@ -72,8 +72,9 @@ export default function EntrySPA() {
   }, [form.name, phoneOk, form.attendance, form.afterParty]);
 
   // GAS 送信
-  const GAS_URL = "https://script.google.com/macros/s/AKfycbyEHwxqb66DobpPKUQfM7_pDfu2AxDlCCT-GY3jY21ImPceafyCr6k3U9Eer_34fNw/exec";
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbySrPF2YWXXcGUvCH_2GcGbyJcsFJsLKFM053-XKf4vQu-mVqFK9DTaA6WwPv9i4qCt/exec";
 
+  
   async function postToGas(payload) {
     // sendBeacon（優先）
     if (navigator.sendBeacon) {
