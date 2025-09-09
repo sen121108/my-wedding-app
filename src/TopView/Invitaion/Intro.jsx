@@ -43,7 +43,7 @@ export default function Intro({
           className={[
             "absolute inset-0 bg-center bg-cover",
             bgLoaded ? "opacity-100 blur-0" : "opacity-0 blur-sm",
-            "transition-all duration-4000 ease-out will-change-opacity",
+            "transition-all duration-2000 ease-out will-change-opacity",
           ].join(" ")}
           style={{ backgroundImage: `url(${imageSrc})` }}
         />
@@ -52,19 +52,19 @@ export default function Intro({
           style={{ backgroundColor: `rgba(0,0,0,${overlay})` }}
         />
       {/* ===== 中央テキスト ===== */}
-      <div className="relative z-10 h-full w-full flex items-center justify-center text-center px-6">
-        <div className="max-w-3xl font-logo">
+      <div className="relative z-10 h-full w-full flex items-center justify-center text-center px-6 ">
+        <div className="max-w-3xl">
           <p className="mb-2 text-lg tracking-[0.3em] uppercase text-white/90">
             Wedding Invitation
           </p>
 
           <h1 className="text-white tracking-wide">
-            <span className={"block text-4xl md:text-5xl"}>
+            <span className={"font-script block text-5xl md:text-6xl"}>
               {groom} &amp; {bride}
             </span>
           </h1>
 
-          <p className={ "mt-3 text-white/90 text-base md:text-lg"}>
+          <p className={ "mt-3 text-white/90 text-base md:text-lg font-script"}>
             {dateLabel}
           </p>
 

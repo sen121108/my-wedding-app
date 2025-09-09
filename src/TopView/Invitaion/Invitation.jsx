@@ -4,7 +4,7 @@ import ArchFrame from "../components/ArchFrame";
 const CONFIG = {
   groom: "Kazumasa",
   bride: "Takako",
-  dateTextJP: "2026年10月10日(土)",
+  dateTextJP: "2026/10/10/(Sat.)",
   ceremonyISO: "2026-10-10T14:00:00+09:00",
   heroImage: "/image/hero.jpg",
 };

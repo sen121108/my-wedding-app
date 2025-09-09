@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         logo: ['"Playfair Display"', 'Noto Serif JP', 'serif'], // タイトル用
-        body: ['"Noto Sans JP"', 'sans-serif'],                // 本文用
+        body: ['"Noto Sans JP"', 'sans-serif'],          
       },
       colors: {
         brand: {

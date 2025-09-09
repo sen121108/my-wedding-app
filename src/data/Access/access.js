@@ -1,7 +1,7 @@
 // src/data/Access/access.js
 
 export const ACCESS_TEXT = {
-  title: "会場アクセス",
+  title: "Access",
   lead: "最寄駅からのルートと地図をご案内します。",
   note: "当日は周辺が混雑する可能性があります。時間に余裕をもってお越しください。",
 };
@@ -50,6 +50,18 @@ export const ACCESS_ROUTES = [
         detail:
           "会場には駐車場がございません。近隣コインパーキングも満車の可能性もあるため公共交通機関推奨です。",
         icon: "🚗",
+      },
+    ],
+  },
+    {
+    type: "hotel",
+    label: "ホテル",
+    items: [
+      {
+        title: "当結婚式会場には連携しているホテルはございません",
+        detail:
+          "宿泊希望の方は各自お探しください。",
+        icon: "🏨",
       },
     ],
   },

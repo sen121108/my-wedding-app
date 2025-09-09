@@ -1,10 +1,6 @@
 import Invitation from "./TopView/Invitaion/Invitation";
 import Schedule from "./TopView/Schedule/Schedule";
 import AccessMap from "./TopView/AccessMap/AccessMap";
-
-import Seating from "./TopView/Seating/Seating";
-import Videos from "./TopView/VideoView/Videos";
-
 import Profile from "./TopView/Profile/ProfileEntry";
 import EntryMessage from "./TopView/Message/EntryMessage";
 import EntryCountdown from "./TopView/Countdown/EntryCountdown";
@@ -19,7 +15,7 @@ const ACCESS_BG = "/image/access/access_BG.jpg"; //
 
 export default function App() {
   return (
-    <div className="font-sans text-gray-800 animate-fadeInSlow bg-brand-500">
+    <div className="font-logo text-gray-800 animate-fadeInSlow bg-brand-500">
       {/* 全ページ常設（/entry等は設定で自動非表示） */}
       <GlobalAnswerBar />
       
@@ -29,8 +25,8 @@ export default function App() {
         </div>
       </section>
 
-    <section id="Message" className="pt-10 bg-[#faf7f3]">
-      <div className="max-w-4xl mx-auto px-6 bg-red-50">
+    <section id="Message" className="pt-10">
+      <div className="max-w-4xl mx-auto px-6">
           <EntryMessage />
       </div>
     </section>
@@ -48,7 +44,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="profile" className="pt-10">
+      <section id="profile" className="pt-15">
         <div className="max-w-3xl mx-auto ">
           <Profile />
         </div>

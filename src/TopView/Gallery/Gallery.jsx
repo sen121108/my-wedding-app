@@ -54,8 +54,8 @@ export default function Gallery({
       {/* ラベルは viewport 外に置いて絶対配置（スワイプを阻害しない） */}
       <div
         className="pointer-events-none absolute left-1.5 top-1.5 z-20
-                   rounded px-2 py-1 bg-white/55
-                   text-[15px] md:text-[18px] tracking-[0.35em]
+                   rounded py-1 bg-white/55
+                   text-[25px] tracking-[0.35em]
                    font-['Cormorant_Garamond',serif]
                    [writing-mode:vertical-rl] select-none"
       >
@@ -63,8 +63,8 @@ export default function Gallery({
       </div>
       <div
         className="pointer-events-none absolute right-1.5 bottom-1.5 z-20
-                   rounded px-2 py-1 bg-white/55 
-                   text-[15px] md:text-[18px] tracking-[0.35em]
+                   rounded py-1 bg-white/55 
+                   text-[25px] tracking-[0.35em]
                    font-['Cormorant_Garamond',serif]
                    [writing-mode:vertical-rl] select-none"
       >
@@ -105,7 +105,7 @@ export default function Gallery({
 
                 {/* キャプション */}
                 {img.caption && (
-                  <figcaption className="mt-2 sm:mt-3 px-1 text-center text-[13px] leading-relaxed text-gray-700">
+                  <figcaption className="pt-5 text-center text-[20px] leading-relaxed text-gray-700">
                     {img.caption}
                   </figcaption>
                 )}
