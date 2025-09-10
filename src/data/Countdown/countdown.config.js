@@ -7,7 +7,7 @@ const countdownConfig = {
   title: "Countdown",
 
   // 目標到達後のメッセージ
-  reachedMessage: "本日は誠にありがとうございます。どうぞお楽しみください！",
+  reachedMessage: "ご参加ありがとうございました。",
 
   // ラベル（必要なら英語などに差し替え可）
   labels: { days: "DAYS", hours: "HOUES", minutes: "MINUTES", seconds: "SECONDS" },

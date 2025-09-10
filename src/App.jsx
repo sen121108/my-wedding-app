@@ -10,8 +10,6 @@ import Gallery from "./TopView/Gallery/Gallery";
 import Footer from "./TopView/Footer/Footer";
 
 const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; // 
-const ACCESS_BG = "/image/access/access_BG.jpg"; // 
-
 
 export default function App() {
   return (
@@ -64,14 +62,7 @@ export default function App() {
 
       <section id="top-map" className="pt-10">
         <div className=" mx-auto ">
-            <SectionWithBg
-              imageSrc={ACCESS_BG}
-              overlay={0.55}     // 画像をさらに“薄く”→数値を上げる
-              tint="white"       // 白ベースの淡いトーン
-              className="p-6 md:p-10"
-            >
-              <AccessMap />
-          </SectionWithBg>
+           <AccessMap />
         </div>
       </section>
 
