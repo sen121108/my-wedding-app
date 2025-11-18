@@ -15,7 +15,7 @@ export default function App() {
   return (
     <div className="font-logo text-gray-800 animate-fadeInSlow bg-brand-500">
       {/* 全ページ常設（/entry等は設定で自動非表示） */}
-      <GlobalAnswerBar />
+      {/* <GlobalAnswerBar /> */}
       
       <section id="top-invitation" className="">
         <div className=" mx-auto">
@@ -23,13 +23,13 @@ export default function App() {
         </div>
       </section>
 
-    <section id="Message" className="pt-10">
+    <section id="Message" className="pt-20">
       <div className="max-w-4xl mx-auto px-6">
           <EntryMessage />
       </div>
     </section>
 
-     <section id="countdown" className="pt-10">
+     <section id="countdown" className="pt-20">
         <div className="mx-auto">
         <SectionWithBg
           imageSrc={COUNTDOWN_BG}
@@ -42,32 +42,32 @@ export default function App() {
         </div>
       </section>
 
-      <section id="profile" className="pt-15">
+      <section id="profile" className="pt-25">
         <div className="max-w-3xl mx-auto ">
           <Profile />
         </div>
       </section>
 
-      <section id="gallery" className="pt-10">
+      <section id="gallery" className="pt-20">
         <div className="mx-auto">
         <Gallery />
         </div>
       </section>
 
       <section id="top-schedule" className="">
-        <div className="max-w-3xl px-6 py-10">
+        <div className="mx-auto px-6 pt-20">
           <Schedule />
         </div>
       </section>
 
-      <section id="top-map" className="pt-10">
+      <section id="top-map" className="pt-20">
         <div className=" mx-auto ">
            <AccessMap />
         </div>
       </section>
 
       <section id="footer" className="">
-        <div className="px-6">
+        <div className="">
           <Footer />
         </div>
       </section>

@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { GALLERY_IMAGES } from "./galleryData";
+import { GALLERY_IMAGES } from "../../data/Gallery/galleryData";
 
 export default function Gallery({
   images = GALLERY_IMAGES,

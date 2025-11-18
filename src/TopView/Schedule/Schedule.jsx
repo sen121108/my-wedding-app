@@ -5,8 +5,8 @@ import { SCHEDULE_TEXT, SCHEDULE_ITEMS } from "../../data/Schedule/schedule";
 export default function Schedule() {
   return (
     <section id="top-schedule" className="">
-      <div className="max-w-3xl mx-auto px-6 py-12">
-        <header className="text-center mb-8 md:mb-10">
+      <div className="max-w-3xl mx-auto">
+        <header className="text-center mb-15 ">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-serif">
             {SCHEDULE_TEXT.title}
           </h2>
@@ -27,7 +27,7 @@ export default function Schedule() {
 
 function Timeline({ items = [] }) {
   return (
-    <ol className="relative ml-6 border-l border-gray-200">
+    <ol className="relative ml-6 border-l mb-10 border-gray-200">
       {/* 装飾: グラデーションの縦線 */}
       <div
         aria-hidden="true"
@@ -37,7 +37,11 @@ function Timeline({ items = [] }) {
         if (item.divider) {
           return <TimelineDivider key={`div-${idx}`} label={item.label} />;
         }
-        return <TimelineItem key={idx} {...item} isLast={idx === items.length - 1} />;
+        return (
+        <div className="mb-8">
+          <TimelineItem key={idx} {...item} isLast={idx === items.length - 1} />
+        </div>
+        )
       })}
     </ol>
   );

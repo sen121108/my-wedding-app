@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/entry" element={<EntrySPA />} />
+        {/* <Route path="/entry" element={<EntrySPA />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
