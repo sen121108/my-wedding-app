@@ -27,7 +27,7 @@ export default function ArchFrame({ className = "", children }) {
       <div
         className={[
           "relative mx-auto w-[100vw] max-w-[680px]",
-          "rounded-t-[40%] rounded-b-[14px] overflow-hidden",
+          "rounded-t-[40%] rounded-b-[14px] ",
           "border border-neutral-400/80 shadow-sm",
           "bg-white",
           className,

@@ -37,11 +37,12 @@ function Timeline({ items = [] }) {
         if (item.divider) {
           return <TimelineDivider key={`div-${idx}`} label={item.label} />;
         }
+
         return (
-        <div className="mb-8">
-          <TimelineItem key={idx} {...item} isLast={idx === items.length - 1} />
-        </div>
-        )
+          <div key={`item-${idx}`} className="mb-8">
+            <TimelineItem {...item} isLast={idx === items.length - 1} />
+          </div>
+        );
       })}
     </ol>
   );
