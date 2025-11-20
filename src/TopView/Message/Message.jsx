@@ -25,7 +25,6 @@ export default function Message() {
         {title}
       </h3>
 
-      <FloralDivider />
 
       {/* リード文（最初の一文を少し大きく） */}
       <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
@@ -43,9 +42,6 @@ export default function Message() {
           <p key={i}>{t}</p>
         ))}
       </div>
-
-      {/* 署名 */}
-      <FloralDivider />
     </article>
   );
 }

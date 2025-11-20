@@ -8,15 +8,17 @@ import SectionWithBg from "./TopView/components/SectionWitdhBg";
 import GlobalAnswerBar from "./TopView/Answer/GlobalAnswerBar";
 import Gallery from "./TopView/Gallery/Gallery";
 import Footer from "./TopView/Footer/Footer";
+import FloatingChaser from "./TopView/components/FloatingChaser";
 
 const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; // 
 
 export default function App() {
   return (
     <div className="font-logo text-gray-800 animate-fadeInSlow bg-brand-500">
-      {/* 全ページ常設（/entry等は設定で自動非表示） */}
       {/* <GlobalAnswerBar /> */}
       
+      <FloatingChaser />
+
       <section id="top-invitation" className="">
         <div className=" mx-auto">
           <Invitation/>
@@ -29,11 +31,13 @@ export default function App() {
       </div>
     </section>
 
+    
+
      <section id="countdown" className="pt-20">
         <div className="mx-auto">
         <SectionWithBg
           imageSrc={COUNTDOWN_BG}
-          overlay={0.55}     // 画像をさらに“薄く”→数値を上げる
+          overlay={0.8}     // 画像をさらに“薄く”→数値を上げる
           tint="white"       // 白ベースの淡いトーン
           className="p-6 md:p-10"
         >
