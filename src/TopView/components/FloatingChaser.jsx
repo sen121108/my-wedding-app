@@ -1,75 +1,134 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function FloatingChaser() {
-  // girl は一定速度で周回
+  // 座標はパーセンテージで扱う（0〜100）
   const [girl, setGirl] = useState({ x: 95, y: 0, phase: 0 });
-  // boy は girl より早い
   const [boy, setBoy] = useState({ x: 90, y: 0, phase: 0 });
 
+  const girlRef = useRef(girl);
+  const boyRef = useRef(boy);
+  const caughtRef = useRef(false); // 追いついてハート出したか
+
   const girlSpeed = 0.25;
-  const boySpeed = 0.75; // ← girl より速い（調整OK）
+  const boySpeed = 0.75;
 
-  const [hearts, setHearts] = useState([]); // ハートリスト
+  const [hearts, setHearts] = useState([]);
 
-  // 与えられた（x,y）座標の進行方向から向きを決める
-  function directionFromPhase(phase) {
+  // フェーズごとの向きや transform を決める
+  function transformFor(phase, facing) {
+    // facing: 'normal' or 'flip' or rotation
     switch (phase) {
-      case 0: return "left";   // 上端を左へ
-      case 1: return "down";   // 左端を下へ
-      case 2: return "right";  // 下端を右へ
-      case 3: return "up";     // 右端を上へ
-      default: return "right";
+      case 0: // top edge, moving right
+        return "translate(-50%, 0)"; // 上辺に沿わせる
+      case 1: // right edge, moving down
+        return "translate(-100%, -50%)"; // 右端に沿わせる
+      case 2: // bottom edge, moving left
+        return "translate(-50%, -100%)"; // 下辺に沿わせる
+      case 3: // left edge, moving up
+        return "translate(0, -50%)"; // 左端に沿わせる
+      default:
+        return "translate(-50%,-50%)";
     }
   }
 
-  // 外周を左回りに移動する処理（キャラごとに速度を変える）
+  // 周回移動（clockwise）: 0 top (x inc 0->100), 1 right (y inc 0->100), 2 bottom (x dec 100->0), 3 left (y dec 100->0)
   function moveCharacter(prev, speed) {
     let { x, y, phase } = prev;
-
     switch (phase) {
-      case 0: x -= speed; if (x <= 5) { x = 5; phase = 1; } break;
-      case 1: y += speed; if (y >= 95) { y = 95; phase = 2; } break;
-      case 2: x += speed; if (x >= 95) { x = 95; phase = 3; } break;
-      case 3: y -= speed; if (y <= 5) { y = 5; phase = 0; } break;
+      case 0:
+        x += speed;
+        if (x >= 100) {
+          x = 100;
+          phase = 1;
+        }
+        break;
+      case 1:
+        y += speed;
+        if (y >= 100) {
+          y = 100;
+          phase = 2;
+        }
+        break;
+      case 2:
+        x -= speed;
+        if (x <= 0) {
+          x = 0;
+          phase = 3;
+        }
+        break;
+      case 3:
+        y -= speed;
+        if (y <= 0) {
+          y = 0;
+          phase = 0;
+        }
+        break;
+      default:
+        break;
     }
     return { x, y, phase };
   }
 
-  // boy → girl の距離をチェック
-  function checkCatch(b, g) {
-    const dx = b.x - g.x;
-    const dy = b.y - g.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    return dist < 5; // 5(vw/vh)以内に近づいたら捕獲とする
+  function distancePercent(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return Math.sqrt(dx * dx + dy * dy);
   }
 
   useEffect(() => {
+    girlRef.current = girl;
+    boyRef.current = boy;
+  }, [girl, boy]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      // ① girl 周回
-      setGirl((prev) => moveCharacter(prev, girlSpeed));
+      // 直列に計算して最新値を参照する
+      const nextGirl = moveCharacter(girlRef.current, girlSpeed);
+      const nextBoy = moveCharacter(boyRef.current, boySpeed);
 
-      // ② boy 周回
-      setBoy((prev) => moveCharacter(prev, boySpeed));
+      girlRef.current = nextGirl;
+      boyRef.current = nextBoy;
 
-      // ③ boy が追いついたらハート追加
-      if (checkCatch(boy, girl)) {
-        setHearts((h) => [
-          ...h,
-          {
-            id: Math.random(),
-            x: girl.x,
-            y: girl.y,
-          },
-        ]);
+      setGirl(nextGirl);
+      setBoy(nextBoy);
 
-        // ハートを3秒後に自然消滅
+      const dist = distancePercent(nextBoy, nextGirl);
+      const catchThreshold = 4.5; // パーセンテージ距離の閾値（調整可）
+
+      if (dist < catchThreshold && !caughtRef.current) {
+        // 捕まえイベント（1回だけ発火）
+        caughtRef.current = true;
+        const id = Math.random().toString(36).slice(2, 9);
+        setHearts((h) => [...h, { id, x: nextGirl.x, y: nextGirl.y }]);
+
+        // 個別に消す
         setTimeout(() => {
-          setHearts((h) => h.slice(1));
-        }, 100);
+          setHearts((h) => h.filter((it) => it.id !== id));
+        }, 1500);
       }
-    }, 16); // 約60fps
+
+      // 捕獲中だったが十分離れたらリセットして次の捕獲を許可
+      if (caughtRef.current && dist > catchThreshold + 3) {
+        caughtRef.current = false;
+      }
+    }, 16);
+
     return () => clearInterval(interval);
-  }, [boy, girl]);
+  }, []);
+
+  // 向き（flip/rotation）はフェーズと進行方向で決定
+  function facingFor(phase, movingForward = true) {
+    // For top (0) and bottom (2), flip horizontally when moving left
+    if (phase === 0) return "normal"; // moving right
+    if (phase === 2) return "flip"; // moving left
+    if (phase === 1) return "down"; // moving down
+    return "up"; // phase 3 moving up
+  }
+
+  function buildTransform(phase) {
+    const base = transformFor(phase);
+    return base; // rotation/flip handled via additional CSS (scaleX/rotate) below
+  }
 
   return (
     <>
@@ -78,16 +137,17 @@ export default function FloatingChaser() {
         src="/image/icons/girl.png"
         className="fixed w-16 h-16 z-[999] pointer-events-none transition-transform duration-75"
         style={{
-          left: `${girl.x}vw`,
-          top: `${girl.y}vh`,
-          transform:
-            directionFromPhase(girl.phase) === "left"
+          left: `${girl.x}%`,
+          top: `${girl.y}%`,
+          transform: `${buildTransform(girl.phase)} ${
+            facingFor(girl.phase) === "flip"
               ? "scaleX(1)"
-              : directionFromPhase(girl.phase) === "right"
-              ? "scaleX(-1)"
-              : directionFromPhase(girl.phase) === "up"
+              : facingFor(girl.phase) === "down"
+              ? "rotate(-90deg)"
+              : facingFor(girl.phase) === "up"
               ? "rotate(90deg)"
-              : "rotate(-90deg)",
+              : "scaleX(-1)"
+          }`,
         }}
       />
 
@@ -96,16 +156,17 @@ export default function FloatingChaser() {
         src="/image/icons/boy.png"
         className="fixed w-16 h-16 z-[999] pointer-events-none transition-transform duration-75"
         style={{
-          left: `${boy.x}vw`,
-          top: `${boy.y}vh`,
-          transform:
-            directionFromPhase(boy.phase) === "left"
+          left: `${boy.x}%`,
+          top: `${boy.y}%`,
+          transform: `${buildTransform(boy.phase)} ${
+            facingFor(boy.phase) === "flip"
               ? "scaleX(1)"
-              : directionFromPhase(boy.phase) === "right"
-              ? "scaleX(-1)"
-              : directionFromPhase(boy.phase) === "up"
+              : facingFor(boy.phase) === "down"
+              ? "rotate(-90deg)"
+              : facingFor(boy.phase) === "up"
               ? "rotate(90deg)"
-              : "rotate(-90deg)",
+              : "scaleX(-1)"
+          }`,
         }}
       />
 
@@ -115,8 +176,9 @@ export default function FloatingChaser() {
           key={h.id}
           className="fixed text-pink-500 text-4xl animate-ping z-[999]"
           style={{
-            left: `${h.x}vw`,
-            top: `${h.y}vh`,
+            left: `${h.x}%`,
+            top: `${h.y}%`,
+            transform: "translate(-50%,-50%)",
           }}
         >
           💗

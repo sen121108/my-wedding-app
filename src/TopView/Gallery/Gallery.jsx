@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { GALLERY_IMAGES } from "../../data/Gallery/galleryData";
+import { Card } from "../../components/ui";
 
 export default function Gallery({
   images = GALLERY_IMAGES,
@@ -82,7 +83,8 @@ export default function Gallery({
               aria-roledescription="slide"
               aria-label={`${i + 1} / ${images.length}`}
             >
-              <figure className="relative bg-white p-3 sm:p-4 border border-gray-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+              <Card pattern={null} className="p-0">
+                <figure className="relative bg-white p-3 sm:p-4 border border-gray-200 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
                 {/* フォトコーナー */}
                 <span className="pointer-events-none absolute left-2 top-2 h-3 w-3 border-t-2 border-l-2 border-amber-300/80"></span>
                 <span className="pointer-events-none absolute right-2 top-2 h-3 w-3 border-t-2 border-r-2 border-amber-300/80"></span>
@@ -109,7 +111,8 @@ export default function Gallery({
                     {img.caption}
                   </figcaption>
                 )}
-              </figure>
+                </figure>
+              </Card>
             </div>
           ))}
         </div>
