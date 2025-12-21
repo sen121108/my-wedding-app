@@ -6,7 +6,7 @@ export default function Card({ children, className = "", pattern = null, variant
     "w-full max-w-3xl",
     "relative overflow-hidden",
     "rounded-xl",
-    "px-6 py-10 md:px-10 md:py-14",
+    "px-4 py-6 md:px-10 md:py-14",
     "flex items-center justify-center",
   ];
 

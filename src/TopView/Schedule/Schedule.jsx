@@ -71,8 +71,8 @@ function TimelineItem({ time, title, detail, highlight = false, isLast }) {
 
       <div className="py-4">
         {/* 時刻 + タイトルを横並び */}
-        <div className="flex items-center gap-3 md:gap-5">
-          <div className="text-base md:text-lg font-semibold text-gray-800 tabular-nums font-serif min-w-[5.5rem] text-center">
+          <div className="flex items-center gap-3 md:gap-5">
+          <div className="text-base md:text-lg font-semibold text-gray-800 tabular-nums font-serif min-w-[3.5rem] md:min-w-[5.5rem] text-center">
             {time}
           </div>
           <h3 className="text-lg md:text-xl leading-tight font-serif tracking-wide">
@@ -82,7 +82,7 @@ function TimelineItem({ time, title, detail, highlight = false, isLast }) {
 
         {/* 詳細文 */}
         {detail && (
-          <p className="mt-2 ml-[5.5rem] text-sm md:text-base text-gray-600 leading-relaxed">
+          <p className="mt-2 ml-[3.5rem] md:ml-[5.5rem] text-sm md:text-base text-gray-600 leading-relaxed">
             {detail}
           </p>
         )}

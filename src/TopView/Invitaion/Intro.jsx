@@ -100,7 +100,7 @@ export default function Intro({
           <Signature />
 
           {/* ---- 新郎新婦名（手書きの下に控えめに表示） ---- */}
-          <p className="mt-4 text-white/90 tracking-wide text-xl md:text-2xl opacity-0 animate-fadein-delay text-foil">
+          <p className="mt-4 text-white/90 tracking-wide text-xl md:text-2xl opacity-0 animate-fadein-delay">
             {groom} &amp; {bride}
           </p>
 

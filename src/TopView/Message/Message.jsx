@@ -28,7 +28,7 @@ export default function Message() {
   {/* 本文（ドロップキャップで上品に） */}
       <div className="mt-6 space-y-5 text-gray-700 leading-loose">
         {paragraphs?.[0] && (
-          <p className="first-letter:text-5xl first-letter:font-serif first-letter:leading-none first-letter:mr-2 first-letter:float-left">
+          <p className="first-letter:font-serif first-letter:leading-none md:first-letter:text-5xl first-letter:text-3xl md:first-letter:mr-2 md:first-letter:float-left">
             {paragraphs[0]}
           </p>
         )}
