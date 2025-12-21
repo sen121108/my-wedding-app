@@ -6,6 +6,7 @@ import {
   ACCESS_ROUTES,
   ACTION_BUTTONS,
 } from "../../data/Access/access";
+import { Card, Ornament } from "../../components/ui";
 
 // 便利リンク生成
 const buildGoogleMapUrl = (q) => `https://maps.google.com/?q=${q}`;
@@ -36,20 +37,25 @@ export default function AccessMap() {
     <section id="access" className="">
       <div className="max-w-3xl mx-auto px-6 py-12">
         <header className="text-center mb-8 md:mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{ACCESS_TEXT.title}</h2>
+          <div className="flex items-center justify-center gap-3">
+            <Ornament />
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{ACCESS_TEXT.title}</h2>
+            <Ornament />
+          </div>
           {ACCESS_TEXT.lead && <p className="text-gray-600 mt-2">{ACCESS_TEXT.lead}</p>}
         </header>
 
         {/* 会場情報 */}
-        <div className="rounded-2xl ring-1 ring-gray-200 bg-white/70 backdrop-blur shadow-sm p-5 md:p-6">
-          <h3 className="text-lg md:text-xl font-semibold">{VENUE.name}</h3>
-          <p className="mt-1 text-gray-700">{VENUE.addressJa}</p>
-          {VENUE.addressLine2 && (
-            <p className="text-gray-700">{VENUE.addressLine2}</p>
-          )}
+        <Card variant="paper" className="p-0">
+          <div className="p-5 md:p-6">
+            <h3 className="text-lg md:text-xl font-semibold">{VENUE.name}</h3>
+            <p className="mt-1 text-gray-700">{VENUE.addressJa}</p>
+            {VENUE.addressLine2 && (
+              <p className="text-gray-700">{VENUE.addressLine2}</p>
+            )}
 
-          {/* アクションボタン */}
-          <div className="mt-4 flex flex-wrap gap-2">
+            {/* アクションボタン */}
+            <div className="mt-4 flex flex-wrap gap-2">
             {ACTION_BUTTONS.map((btn, idx) => {
               if (btn.kind === "google")
                 return (
@@ -90,6 +96,7 @@ export default function AccessMap() {
                 );
               return null;
             })}
+            </div>
           </div>
 
           {/* 地図 */}
@@ -105,7 +112,7 @@ export default function AccessMap() {
               />
             </div>
           </div>
-        </div>
+        </Card>
 
         {/* アクセス手段 */}
         <div className="mt-8 grid gap-5">

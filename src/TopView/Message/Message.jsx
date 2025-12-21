@@ -2,6 +2,7 @@
 import React from "react";
 import message from "../../data/Message/message";
 import FloralDivider from "../components/FloralDivider";
+import { Ornament } from "../../components/ui";
 
 export default function Message() {
   const { title, lead, paragraphs} = message;
@@ -18,7 +19,11 @@ export default function Message() {
         {lead}
       </p>
 
-  <FloralDivider />
+      <div className="flex items-center justify-center gap-4 my-6">
+        <Ornament width={140} />
+        <FloralDivider />
+        <Ornament width={140} />
+      </div>
 
   {/* 本文（ドロップキャップで上品に） */}
       <div className="mt-6 space-y-5 text-gray-700 leading-loose">

@@ -1,5 +1,6 @@
 import React from "react";
 import { FOOTER } from "../../data/Footer/footer";
+import { Ornament } from "../../components/ui";
 
 export default function Footer() {
   return (
@@ -7,8 +8,7 @@ export default function Footer() {
       <div className=" mx-auto px-6 py-10 text-center relative">
         {/* 装飾ライン */}
         <div className="flex items-center justify-center gap-3 text-pink-400 mb-4">
-          <span className="h-px w-12 bg-pink-200" aria-hidden />
-          <span className="h-px w-12 bg-pink-200" aria-hidden />
+          <Ornament />
         </div>
 
         {/* created by */}
@@ -17,7 +17,7 @@ export default function Footer() {
         </p>
 
         {/* 名前 */}
-        <p className="mt-2 text-2xl md:text-3xl font-serif text-gray-800 italic">
+        <p className="mt-2 text-2xl md:text-3xl font-serif text-gray-800 italic text-foil">
           {FOOTER.author}
         </p>
 

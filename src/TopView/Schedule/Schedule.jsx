@@ -1,26 +1,33 @@
 // src/components/Schedule/ScheduleSection.jsx
 import React from "react";
 import { SCHEDULE_TEXT, SCHEDULE_ITEMS } from "../../data/Schedule/schedule";
+import { Card, Ornament } from "../../components/ui";
 
 export default function Schedule() {
   return (
     <section id="top-schedule" className="">
-      <div className="max-w-3xl mx-auto">
-        <header className="text-center mb-15 ">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-serif">
-            {SCHEDULE_TEXT.title}
-          </h2>
-          {SCHEDULE_TEXT.lead && (
-            <p className="text-gray-600 mt-2">{SCHEDULE_TEXT.lead}</p>
+      <Card variant="paper">
+        <div className="w-full">
+          <header className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3">
+              <Ornament />
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-serif ">
+                {SCHEDULE_TEXT.title}
+              </h2>
+              <Ornament />
+            </div>
+            {SCHEDULE_TEXT.lead && (
+              <p className="text-gray-600 mt-2">{SCHEDULE_TEXT.lead}</p>
+            )}
+          </header>
+
+          <Timeline items={SCHEDULE_ITEMS} />
+
+          {SCHEDULE_TEXT.note && (
+            <p className="mt-8 text-xs text-gray-500 text-center">{SCHEDULE_TEXT.note}</p>
           )}
-        </header>
-
-        <Timeline items={SCHEDULE_ITEMS} />
-
-        {SCHEDULE_TEXT.note && (
-          <p className="mt-8 text-xs text-gray-500 text-center">{SCHEDULE_TEXT.note}</p>
-        )}
-      </div>
+        </div>
+      </Card>
     </section>
   );
 }

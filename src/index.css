@@ -7,7 +7,13 @@
   }
 
   :root {
-    --brand-bg: #fbf7f1;
+  --brand-bg: #fbf7f1;
+  /* Brand palette */
+  --brand-cream: #fbf7f1;
+  --brand-ink: #2b2b2b;
+  --brand-gold: #c9a14b;
+  --brand-rose: #e9cfc7;
+  --brand-accent: var(--brand-gold);
   }
 
   html, body {

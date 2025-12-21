@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        logo: ['"Playfair Display"', 'Noto Serif JP', 'serif'], // タイトル用
-        body: ['"Noto Sans JP"', 'sans-serif'],          
+  logo: ['"Playfair Display"', 'Cormorant Garamond', 'serif'], // タイトル用
+  body: ['"Noto Sans JP"', 'Inter', 'sans-serif'],
       },
       colors: {
         brand: {

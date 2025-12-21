@@ -92,15 +92,15 @@ export default function Intro({
       {/* ===== 中央コンテンツ ===== */}
       <div className="relative z-10 h-full w-full flex items-center justify-center text-center px-6 ">
         <div className="max-w-3xl">
-          <p className="mb-2 text-lg tracking-[0.3em] uppercase text-white/90">
-            Wedding Invitation
-          </p>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <span className="text-lg tracking-[0.3em] uppercase text-white/90">Wedding Invitation</span>
+          </div>
 
           {/* ---- 手書きアニメーション ---- */}
           <Signature />
 
           {/* ---- 新郎新婦名（手書きの下に控えめに表示） ---- */}
-          <p className="mt-4 text-white/90 tracking-wide text-xl md:text-2xl opacity-0 animate-fadein-delay">
+          <p className="mt-4 text-white/90 tracking-wide text-xl md:text-2xl opacity-0 animate-fadein-delay text-foil">
             {groom} &amp; {bride}
           </p>
 
