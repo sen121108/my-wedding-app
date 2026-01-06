@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+/* page container safe padding for small screens */
+.page-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

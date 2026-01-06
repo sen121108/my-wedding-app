@@ -19,6 +19,11 @@
   html, body {
     background: var(--brand-bg);
   }
+
+  /* prevent accidental horizontal overflow on small viewports */
+  body {
+    overflow-x: hidden;
+  }
 }
 
 /* 手書きアニメーション */

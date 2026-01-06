@@ -20,13 +20,13 @@ export default function App() {
       <FloatingChaser />
 
       <section id="top-invitation" className="">
-        <div className=" mx-auto">
+        <div className="page-container mx-auto">
           <Invitation/>
         </div>
       </section>
 
     <section id="Message" className="pt-20">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="page-container max-w-4xl mx-auto px-6">
           <EntryMessage />
       </div>
     </section>
@@ -47,7 +47,7 @@ export default function App() {
       </section>
 
       <section id="profile" className="pt-25">
-        <div className="max-w-3xl mx-auto ">
+        <div className="page-container max-w-3xl mx-auto ">
           <Profile />
         </div>
       </section>
@@ -59,15 +59,15 @@ export default function App() {
       </section>
 
       <section id="top-schedule" className="">
-        <div className="mx-auto px-6 pt-20">
+        <div className="page-container mx-auto px-6 pt-20">
           <Schedule />
         </div>
       </section>
 
-      <section id="top-map" className="pt-20">
-        <div className=" mx-auto ">
-           <AccessMap />
-        </div>
+    <section id="top-map" className="pt-20">
+      <div className="page-container mx-auto ">
+        <AccessMap />
+      </div>
       </section>
 
       <section id="footer" className="">
