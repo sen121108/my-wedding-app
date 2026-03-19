@@ -5,7 +5,7 @@ export default function ArchFrame({ className = "", children }) {
   const sparkles = Array.from({ length: 14 });
 
   return (
-    <div className="w-full flex items-center justify-center bg-[#faf7f3] relative overflow-visible">
+    <div className="w-full flex items-center justify-center bg-transparent relative overflow-visible">
 
       {/* === キラキラ粒子（Tailwind） === */}
       <div className="absolute inset-0 pointer-events-none overflow-visible">
@@ -27,9 +27,9 @@ export default function ArchFrame({ className = "", children }) {
       <div
         className={[
           "relative mx-auto w-[100vw] max-w-[680px]",
-          "rounded-t-[40%] rounded-b-[14px] ",
-          "border border-neutral-400/80 shadow-sm",
-          "bg-white",
+          "rounded-t-[30%] rounded-b-[14px] ",
+          "border border-neutral-400/40 shadow-sm",
+          "bg-white/90 backdrop-blur-md",
           className,
         ].join(" ")}
       >
