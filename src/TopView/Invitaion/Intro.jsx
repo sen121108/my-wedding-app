@@ -12,14 +12,13 @@ export default function Intro({
   groom = "",
   bride = "",
   dateLabel = "",
-  bgImageSrc = "/image/herobg.jpg",   // 背景画像（夜空など）
-  photoSrc1 = "/image/hero.jpg",    // メイン写真
-  photoSrc2 = "/image/profile/bride.jpg",   // サブ写真1
-  photoSrc3 = "/image/profile/groom.jpg",   // サブ写真2
-  photoSrc4 = "/image/gallery/95B06D12-D06D-4CBD-8C91-C38996A742D0.JPEG", // サブ写真3
-  photoSrc5 = "/image/gallery/A6E8768A-0A43-44DA-87FF-53B888967918.JPEG", // サブ写真4
-  photoSrc6 = "/image/gallery/E5F9829F-C52E-447B-A86B-5CBCF06974B2.JPEG",  // サブ写真5
-
+  bgImageSrc = "",   // 背景画像（夜空など）
+  photoSrc1 = "",    // メイン写真
+  photoSrc2 = "",   // サブ写真1
+  photoSrc3 = "",   // サブ写真2
+  photoSrc4 = "", // サブ写真3
+  photoSrc5 = "", // サブ写真4
+  photoSrc6 = "",  // サブ写真5
 }) {
   const [imagesLoaded, setImagesLoaded] = React.useState({
     bg: false,

@@ -15,7 +15,7 @@ const CONFIG = {
   heroSubPhoto4: "/image/gallery/A6E8768A-0A43-44DA-87FF-53B888967918.JPEG",
   heroSubPhoto5: "/image/gallery/E5F9829F-C52E-447B-A86B-5CBCF06974B2.JPEG",
   // 背景画像（夜空、グラデーションなど）
-  heroBgImage: "/image/hero.jpg",
+  heroBgImage: "/image/herobg.jpg",
 };
 
 export default function Invitation() {
