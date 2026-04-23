@@ -1,43 +1,19 @@
-import React, { useMemo } from "react";
+import React from "react";
 import Intro from "./Intro";
 import ArchFrame from "../components/ArchFrame";
-const CONFIG = {
-  groom: "Kazumasa",
-  bride: "Takako",
-  dateTextJP: "2026/10/10/(Sat.)",
-  ceremonyISO: "2026-10-10T14:00:00+09:00",
-  heroImage: "/image/hero.jpg",
-  // コラージュ用写真
-  heroMainPhoto: "/image/hero.jpg",
-  heroSubPhoto1: "/image/profile/bride.jpg",
-  heroSubPhoto2: "/image/profile/groom.jpg",
-  heroSubPhoto3: "/image/gallery/95B06D12-D06D-4CBD-8C91-C38996A742D0.JPEG",
-  heroSubPhoto4: "/image/gallery/A6E8768A-0A43-44DA-87FF-53B888967918.JPEG",
-  heroSubPhoto5: "/image/gallery/E5F9829F-C52E-447B-A86B-5CBCF06974B2.JPEG",
-  // 背景画像（夜空、グラデーションなど）
-  heroBgImage: "/image/herobg.jpg",
-};
+import { INVITATION_CONFIG } from "./invitationConfig";
 
 export default function Invitation() {
-  const targetMs = useMemo(() => new Date(CONFIG.ceremonyISO).getTime(), []);
 
   return (
     <>
       <ArchFrame>
         <Intro
-          groom={CONFIG.groom}
-          bride={CONFIG.bride}
-          dateLabel={CONFIG.dateTextJP}
-          imageSrc={CONFIG.heroImage}
-          bgImageSrc={CONFIG.heroBgImage}
-          photoSrc1={CONFIG.heroMainPhoto}
-          photoSrc2={CONFIG.heroSubPhoto1}
-          photoSrc3={CONFIG.heroSubPhoto2}
-          photoSrc4={CONFIG.heroSubPhoto3}
-          photoSrc5={CONFIG.heroSubPhoto4}
-          photoSrc6={CONFIG.heroSubPhoto5}
-          bottomRightBadge={formatDateBadge(CONFIG.ceremonyISO)}
-          countdownTargetMs={new Date(CONFIG.ceremonyISO).getTime()}
+          groom={INVITATION_CONFIG.groom}
+          bride={INVITATION_CONFIG.bride}
+          dateTextJP={INVITATION_CONFIG.dateTextJP}
+          heroBgImage={INVITATION_CONFIG.heroBgImage}
+          heroMainPhoto={INVITATION_CONFIG.heroMainPhoto}
         />
       </ArchFrame>
 
@@ -57,14 +33,4 @@ export default function Invitation() {
       </section>
     </>
   );
-}
-
-/* ========= ヘルパ ========= */
-function formatDateBadge(iso) {
-  const d = new Date(iso);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  const w = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][d.getDay()];
-  return `${y}.${m}.${day} ${w}`;
 }
