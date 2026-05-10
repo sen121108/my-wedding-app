@@ -9,8 +9,8 @@ export default function FloatingChaser() {
   const boyRef = useRef(boy);
   const caughtRef = useRef(false); // 追いついてハート出したか
 
-  const girlSpeed = 0.25;
-  const boySpeed = 0.75;
+  const girlSpeed = 0.20;
+  const boySpeed = 0.80;
 
   const [hearts, setHearts] = useState([]);
 
