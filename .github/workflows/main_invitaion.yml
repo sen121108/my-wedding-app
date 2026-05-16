@@ -24,6 +24,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Check dist（ここに入れる）
+        run: |
+          echo "===== ROOT ====="
+          ls -la
+          echo "===== DIST ====="
+          ls -la dist
+
       - name: Confirm dist
         run: ls -la dist
 
