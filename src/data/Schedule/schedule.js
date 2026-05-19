@@ -24,15 +24,11 @@ export const SCHEDULE_ITEMS = [
   },
   {
     time: "17:00",
-    title: "おひらき・ご移動",
+    title: "おひらき",
   },
   {
     // 仕切りだけ挟みたい場合（任意）
     divider: true,
-    label: "二次会",
-  },
-  {
-    time: "18:00",
-    title: "二次会 開始 (参加者希望者のみ)",
+    label: "二次会(各自開催)",
   },
 ];

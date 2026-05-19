@@ -11,7 +11,7 @@ export const VENUE = {
   name: "CHARMANT SCENA TOKYO",
   addressJa: "東京都渋谷区神宮前4-5-6",
   // 任意: 建物名やフロアなど
-  addressLine2: "3F チャペル / 2F バンケット",
+  addressLine2: "3F CRYSTAL CHAPEL / 1F NOVEL CRYSTAL",
   // Google Maps の埋め込みURL（共有→地図を埋め込む→URL）
   // 既にお持ちなら差し替え、未確定なら query から自動生成も可
   mapEmbedSrc:
