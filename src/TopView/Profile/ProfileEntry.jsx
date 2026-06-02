@@ -1,6 +1,6 @@
 // src/Profile/pages/ProfileEntry.jsx
 import PersonCard from "./PersonCard";
-import { PAGE_TEXT, bride, groom } from "../../data/Profile/profile";
+import { PAGE_TEXT, bride, groom, cat } from "../../data/Profile/profile";
 
 
 // 上部・下部の飾り（シンプル花風SVG）
@@ -52,6 +52,16 @@ export default function ProfileEntry() {
           tags={bride.tags}
           accent="bride"
           align="right"
+        />
+        {/* cat（右画像） */}
+        <PersonCard
+          title={PAGE_TEXT.catTitle}
+          photo={cat.photo}
+          bio={cat.bio}
+          links={cat.links}
+          tags={cat.tags}
+          accent="cat"
+          align="left"
         />
       </div>
       <FloralDivider />
