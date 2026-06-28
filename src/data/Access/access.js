@@ -31,13 +31,8 @@ export const ACCESS_ROUTES = [
     items: [
       {
         title: "表参道駅 A2出口 から徒歩7分",
-        detail: "表参道交差点を原宿方面へ。Apple表参道を左折し、直進。",
+        detail: "表参道交差点を原宿方面へ。Apple表参道を右折し、直進。",
         icon: "🚇",
-      },
-      {
-        title: "明治神宮前駅 から徒歩10分",
-        detail: "神宮前交差点を表参道方面へ直進。",
-        icon: "🚶",
       },
     ],
   },

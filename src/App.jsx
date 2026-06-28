@@ -15,7 +15,7 @@ const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; //
 export default function App() {
   return (
     <div className="font-logo text-gray-800 animate-fadeInSlow bg-brand-500">
-      {/* <GlobalAnswerBar /> */}
+      <GlobalAnswerBar />
       
       <FloatingChaser />
 
