@@ -1,106 +1,105 @@
-// src/Entry/components/OptionalSection.jsx
 import React from "react";
 
 export default function OptionalSection({ value, onChange, giftOptions }) {
-  const showAddress = !!value.gift;
-
   return (
-    <section>
-      <div className="flex items-center gap-3">
-        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-        <span className="text-xs tracking-widest text-gray-500 uppercase">Optional</span>
-        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-      </div>
-
-      <h3 className="mt-4 text-lg font-serif text-gray-800">任意のご入力（出席の方）</h3>
-      <p className="text-xs text-gray-500">
-        必要に応じてご記入ください（未記入でも送信できます）
-      </p>
-
-      <div className="mt-5 grid gap-5">
-        {/* お連れ様の人数 */}
-        <div>
-          <label className="block text-sm mb-1 text-gray-700">お連れ様の人数</label>
-          <select
-            value={value.guestCount}
-            onChange={(e) => onChange({ guestCount: e.target.value })}
-            className="w-full appearance-none rounded-2xl border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800/30"
-          >
-            {["0", "1", "2", "3","その他(ご要望・懸念点に詳細をご記入ください)"].map((n) => (
-              <option key={n} value={n}>{n} 名</option>
-            ))}
-          </select>
+    <section className="space-y-4">
+      <fieldset className="rounded-2xl border border-gray-200 p-4">
+        <legend className="px-1 text-sm font-medium text-gray-700">二次会</legend>
+        <div className="mt-3 flex flex-wrap gap-4">
+          <label className="flex items-center gap-2 text-sm text-gray-700">
+            <input
+              type="radio"
+              checked={value.afterParty === "yes"}
+              onChange={() => onChange({ afterParty: "yes" })}
+              className="h-4 w-4"
+            />
+            参加する
+          </label>
+          <label className="flex items-center gap-2 text-sm text-gray-700">
+            <input
+              type="radio"
+              checked={value.afterParty === "no"}
+              onChange={() => onChange({ afterParty: "no" })}
+              className="h-4 w-4"
+            />
+            参加しない
+          </label>
         </div>
+      </fieldset>
 
-        {/* アレルギー */}
-        <div>
-          <label className="block text-sm mb-1 text-gray-700">アレルギー</label>
-          <textarea
-            value={value.allergy}
-            onChange={(e) => onChange({ allergy: e.target.value })}
-            placeholder="例) 甲殻類アレルギー など"
-            className="w-full min-h-[110px] rounded-2xl border border-gray-300 px-4 py-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800/30"
-          />
+      <label className="block text-sm font-medium text-gray-700">
+        <span className="mb-2 block">お連れ様の人数</span>
+        <select
+          value={value.guestCount}
+          onChange={(e) => onChange({ guestCount: e.target.value })}
+          className="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-gray-900"
+        >
+          <option value="0">0名</option>
+          <option value="1">1名</option>
+          <option value="2">2名</option>
+          <option value="3">3名</option>
+        </select>
+      </label>
+
+      <label className="block text-sm font-medium text-gray-700">
+        <span className="mb-2 block">アレルギー</span>
+        <input
+          type="text"
+          value={value.allergy}
+          onChange={(e) => onChange({ allergy: e.target.value })}
+          className="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-gray-900"
+          placeholder="特になければ空欄でOK"
+        />
+      </label>
+
+      <label className="block text-sm font-medium text-gray-700">
+        <span className="mb-2 block">引出物</span>
+        <select
+          value={value.gift}
+          onChange={(e) => onChange({ gift: e.target.value })}
+          className="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-gray-900"
+        >
+          {giftOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      {value.gift && (
+        <div className="space-y-4 rounded-2xl border border-gray-200 p-4">
+          <label className="block text-sm font-medium text-gray-700">
+            <span className="mb-2 block">郵便番号</span>
+            <input
+              type="text"
+              value={value.postal}
+              onChange={(e) => onChange({ postal: e.target.value })}
+              className="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-gray-900"
+            />
+          </label>
+
+          <label className="block text-sm font-medium text-gray-700">
+            <span className="mb-2 block">住所</span>
+            <input
+              type="text"
+              value={value.address}
+              onChange={(e) => onChange({ address: e.target.value })}
+              className="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-gray-900"
+            />
+          </label>
         </div>
+      )}
 
-        {/* 引出物（ギフト） */}
-        <div>
-          <label className="block text-sm mb-1 text-gray-700">引出物（ギフト）</label>
-          <div className="relative">
-            <select
-              value={value.gift}
-              onChange={(e) => onChange({ gift: e.target.value })}
-              className="w-full appearance-none rounded-2xl border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800/30"
-            >
-              {giftOptions.map((o) => (
-                <option key={o.value} value={o.value}>
-                  {o.label}
-                </option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">▾</span>
-          </div>
-          <p className="mt-1 text-xs text-gray-500">
-            ※ ギフトを選択いただいた場合は、受け取り先のご住所をご入力ください
-          </p>
-        </div>
-
-        {/* 住所（gift 入力時に表示） */}
-        {showAddress && (
-          <div className="grid gap-4 md:grid-cols-[160px_1fr]">
-            <div>
-              <label className="block text-sm mb-1 text-gray-700">郵便番号</label>
-              <input
-                value={value.postal}
-                onChange={(e) => onChange({ postal: e.target.value })}
-                placeholder="150-0001"
-                inputMode="numeric"
-                className="w-full rounded-2xl border border-gray-300 px-4 py-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800/30"
-              />
-            </div>
-            <div>
-              <label className="block text-sm mb-1 text-gray-700">住所</label>
-              <input
-                value={value.address}
-                onChange={(e) => onChange({ address: e.target.value })}
-                placeholder="東京都渋谷区神宮前 1-2-3 ○○マンション101"
-                className="w-full rounded-2xl border border-gray-300 px-4 py-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800/30"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* ご要望・懸念点 */}
-        <div>
-          <label className="block text-sm mb-1 text-gray-700">ご要望・懸念点</label>
-          <textarea
-            value={value.note}
-            onChange={(e) => onChange({ note: e.target.value })}
-            placeholder="ベビーカー持参/途中退席の可能性 など"
-            className="w-full min-h-[110px] rounded-2xl border border-gray-300 px-4 py-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800/30"
-          />
-        </div>
-      </div>
+      <label className="block text-sm font-medium text-gray-700">
+        <span className="mb-2 block">ご要望・懸念点</span>
+        <textarea
+          value={value.note}
+          onChange={(e) => onChange({ note: e.target.value })}
+          className="min-h-24 w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-gray-900"
+          placeholder="ご自由にお書きください"
+        />
+      </label>
     </section>
   );
 }

@@ -1,11 +1,11 @@
 import Invitation from "./TopView/Invitaion/Invitation";
 import Schedule from "./TopView/Schedule/Schedule";
 import AccessMap from "./TopView/AccessMap/AccessMap";
+import ConfirmationForm from "./TopView/Confirmation/ConfirmationForm";
 import Profile from "./TopView/Profile/ProfileEntry";
 import EntryMessage from "./TopView/Message/EntryMessage";
 import EntryCountdown from "./TopView/Countdown/EntryCountdown";
 import SectionWithBg from "./TopView/components/SectionWitdhBg";
-import GlobalAnswerBar from "./TopView/Answer/GlobalAnswerBar";
 import Gallery from "./TopView/Gallery/Gallery";
 import Footer from "./TopView/Footer/Footer";
 import FloatingChaser from "./TopView/components/FloatingChaser";
@@ -15,7 +15,6 @@ const COUNTDOWN_BG = "/image/countdown/countBack.jpg"; //
 export default function App() {
   return (
     <div className="font-logo text-gray-800 animate-fadeInSlow bg-brand-500">
-      <GlobalAnswerBar />
       
       <FloatingChaser />
 
@@ -68,6 +67,12 @@ export default function App() {
       <div className="page-container mx-auto ">
         <AccessMap />
       </div>
+      </section>
+
+      <section id="confirmation" className="pt-5 pb-5">
+        <div className="">
+          <ConfirmationForm />
+        </div>
       </section>
 
       <section id="footer" className="">

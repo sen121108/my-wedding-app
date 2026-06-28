@@ -50,7 +50,7 @@ export default function GlobalAnswerBar() {
         </a>
 
         <a
-          href="/entry"
+          href="/#confirmation"
           style={{
             background: "#111827",
             color: "#fff",
