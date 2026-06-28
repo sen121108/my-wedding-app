@@ -8,7 +8,6 @@ export const SCHEDULE_TEXT = {
 };
 
 // タイムラインの本体データ
-// 必要に応じて icon, location, link, highlight, divider などを追加できます
 export const SCHEDULE_ITEMS = [
   {
     time: "13:30",
@@ -17,9 +16,10 @@ export const SCHEDULE_ITEMS = [
   {
     time: "14:00",
     title: "挙式",
+    detail: "本時間までに着替え含めた準備を全てお済ませください",
   },
   {
-    time: "15:00",
+    time: "14:45",
     title: "披露宴",
   },
   {

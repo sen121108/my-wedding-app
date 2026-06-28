@@ -14,9 +14,9 @@ export default function PersonCard({
   const isRight = align === "right";
 
   const accents = {
-    rose:   { ring: "ring-rose-200",    chip: "bg-rose-50 border-rose-200",    ribbon: "bg-rose-500" },
-    groom:  { ring: "ring-sky-200",     chip: "bg-sky-50 border-sky-200",      ribbon: "bg-sky-500" },
-    bride:  { ring: "ring-emerald-200", chip: "bg-emerald-50 border-emerald-200", ribbon: "bg-emerald-500" },
+    rose:   { ring: "ring-orange-200",    chip: "bg-orange-50 border-orange-200",    ribbon: "bg-orange-200" },
+    groom:  { ring: "ring-indigo-200",     chip: "bg-indigo-50 border-indigo-200",      ribbon: "bg-indigo-200" },
+    bride:  { ring: "ring-rose-100", chip: "bg-fuchsia-50 border-rose-100", ribbon: "bg-rose-200" },
   };
   const a = accents[accent] ?? accents.rose;
 
@@ -41,7 +41,6 @@ export default function PersonCard({
                 alt={title}
                 className="h-44 w-44 md:h-60 md:w-60 object-cover rounded-xl"
               />
-              <figcaption className="mt-2 text-center text-sm text-gray-500">{title}</figcaption>
               <span className="absolute -top-2 -right-2 h-4 w-4 rounded-full bg-gray-300 shadow-inner" />
             </figure>
           </div>
