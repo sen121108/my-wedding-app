@@ -85,7 +85,6 @@ export default function ConfirmationForm() {
       setSubmittedData(payload);
       
       setStatus("success");
-      setForm(initialForm);
     } catch {
       setStatus("error");
     }
