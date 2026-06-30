@@ -10,7 +10,7 @@ const countdownConfig = {
   reachedMessage: "ご参加ありがとうございました。",
 
   // ラベル（必要なら英語などに差し替え可）
-  labels: { days: "DAYS", hours: "HOUES", minutes: "MINUTES", seconds: "SECONDS" },
+  labels: { days: "DAYS", hours: "HOURS", minutes: "MINUTES", seconds: "SECONDS" },
 };
 
 export default countdownConfig;

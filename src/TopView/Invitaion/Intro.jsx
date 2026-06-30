@@ -220,7 +220,7 @@ export default function Intro(config = {}) {
           </h1>
 
           {/* ---- 日付 ---- */}
-          <p className="mt-6 text-white/80 text-sm md:text-base tracking-widest opacity-0 animate-fadein-late">
+          <p className="mt-6 text-white text-2xl md:text-2xl tracking-widest opacity-0 animate-fadein-late">
             {dateTextJP}
           </p>
         </div>
