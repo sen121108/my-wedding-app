@@ -21,7 +21,8 @@ export default function Message() {
       <div className="space-y-4 md:space-y-5 text-gray-700 leading-relaxed md:leading-loose text-sm md:text-base px-4 md:px-0 text-center">
 
         {paragraphs?.map((t, i) => (
-          <p key={i}>{t}</p>
+          <p key={i}
+            className="whitespace-pre-line">{t}</p>
         ))}
       </div>
 

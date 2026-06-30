@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbxRPS8D_MZoPPoHblxzvmT6OzDxcvH3ZCaDDwHaeOAlpVonE3ER4CyDH3j79witrNQ2Eg/exec";
+  "https://script.google.com/macros/s/AKfycbwn646IZi-NiEcWbOFZRU1UUjv9nGmSJ9MN0rzPaAvaRwWviHKXKof-n5RD9_H6w1YfZw/exec";
 
 const SUBMITTED_DATA_KEY = "confirmationFormSubmitted";
 
@@ -10,6 +10,8 @@ const initialForm = {
   phone: "",
   allergy: "",
   attendance: "",
+  companions: "",
+  remarks: "",
 };
 
 async function postToGas(payload) {
@@ -36,10 +38,12 @@ export default function ConfirmationForm() {
         setSubmittedData(parsedData);
         // 送信済みデータをフォームの初期値として設定
         setForm({
-          name: parsedData.name,
-          phone: parsedData.phone,
-          allergy: parsedData.allergy,
-          attendance: parsedData.attendance,
+            name: parsedData.name || "",
+            phone: parsedData.phone || "",
+            allergy: parsedData.allergy || "",
+            attendance: parsedData.attendance || "",
+            companions: parsedData.companions || "",
+            remarks: parsedData.remarks || "",
         });
       } catch {
         // パース失敗時は無視
@@ -72,6 +76,8 @@ export default function ConfirmationForm() {
         phone: form.phone.trim(),
         allergy: form.allergy.trim(),
         attendance: form.attendance,
+        companions: form.companions.trim(),
+        remarks: form.remarks.trim(),
         requestId:
           typeof crypto !== "undefined" && crypto.randomUUID
             ? crypto.randomUUID()
@@ -150,6 +156,33 @@ export default function ConfirmationForm() {
                 onChange={handleChange}
                 placeholder="特になければ空欄でOK"
                 className="w-full rounded-2xl border border-[#e3d8c7] bg-[#fcfaf7] px-4 py-3.5 text-sm text-[#43372f] outline-none transition focus:border-[#a28a67] focus:bg-white"
+              />
+            </label>
+
+            <label className="block text-sm font-medium text-[#6b5a4e]">
+              <span className="mb-2 block">ご同行者様のお名前</span>
+              <input
+                type="text"
+                name="companions"
+                value={form.companions}
+                onChange={handleChange}
+                placeholder="例：山田 太郎、山田 花子"
+                className="w-full rounded-2xl border border-[#e3d8c7] bg-[#fcfaf7] px-4 py-3.5 text-sm text-[#43372f] outline-none transition focus:border-[#a28a67] focus:bg-white"
+              />
+              <p className="mt-1 text-xs text-[#8a7a6d]">
+                ※同行者がいる場合はご記入ください
+              </p>
+            </label>
+
+            <label className="block text-sm font-medium text-[#6b5a4e]">
+              <span className="mb-2 block">備考・ご連絡事項</span>
+              <textarea
+                name="remarks"
+                value={form.remarks}
+                onChange={handleChange}
+                rows={4}
+                placeholder="ご質問やご連絡事項などございましたらご記入ください"
+                className="w-full rounded-2xl border border-[#e3d8c7] bg-[#fcfaf7] px-4 py-3.5 text-sm text-[#43372f] outline-none transition focus:border-[#a28a67] focus:bg-white resize-none"
               />
             </label>
 
