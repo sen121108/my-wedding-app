@@ -69,7 +69,7 @@ export default function App() {
       </div>
       </section>
 
-      <section id="confirmation" className="pt-5 pb-5">
+      <section id="confirmation" className="pt-5">
         <div className="">
           <ConfirmationForm />
         </div>

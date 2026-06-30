@@ -21,7 +21,7 @@ export const groom = {
 
 export const cat = {
   photo: "/image/profile/cat.jpg",
-  bio: "好奇心旺盛で遊ぶことが大好きな我が家のアイドル💗 たっぷり遊び、たっぷり寝ます",
+  bio: "好奇心旺盛で遊ぶことが大好きな我が家のアイドル💗 よく遊びよく寝ます",
   tags: ["2026/3/3","東京都出身", "アイドル"],
 };
 

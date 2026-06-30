@@ -117,7 +117,7 @@ export default function ConfirmationForm() {
           </div>
 
           <p className="text-center text-sm leading-7 text-[#78685b] md:text-base">
-            7/30までにご回答をお願いします。<br />なお複数名でご出席の場合は代表者の方が一つずつ回答を送信ください
+            7/31(金)までにご回答をお願いします
           </p>
 
           <form onSubmit={handleSubmit} className="mt-7 space-y-4">
@@ -166,7 +166,7 @@ export default function ConfirmationForm() {
                 name="companions"
                 value={form.companions}
                 onChange={handleChange}
-                placeholder="例：山田 太郎、山田 花子"
+                placeholder="例：太郎(アレルギーなし)　桃子 (卵アレルギー)"
                 className="w-full rounded-2xl border border-[#e3d8c7] bg-[#fcfaf7] px-4 py-3.5 text-sm text-[#43372f] outline-none transition focus:border-[#a28a67] focus:bg-white"
               />
               <p className="mt-1 text-xs text-[#8a7a6d]">

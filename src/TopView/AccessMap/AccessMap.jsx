@@ -131,13 +131,13 @@ export default function AccessMap() {
                       <div className="pt-0.5" aria-hidden>{it.icon || "•"}</div>
                       <div>
                         <div className="font-medium">{it.title}</div>
-                        {it.detail && <p className="text-sm text-gray-600 mt-0.5">{it.detail}</p>}
+                        {it.detail && <p className="text-sm text-gray-600 mt-0.5 whitespace-pre-line">{it.detail}</p>}
                         {detailLink && (
                           <a
                             href={detailLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-1 inline-flex items-center text-sm font-medium text-blue-600 underline-offset-2 hover:underline"
+                            className="mt-1 inline-flex items-center text-sm font-medium text-blue-600 underline-offset-2 hover:underline whitespace-pre-line"
                           >
                             {it.detailLabel || "詳細はこちら"}
                           </a>
@@ -152,7 +152,9 @@ export default function AccessMap() {
         </div>
 
         {ACCESS_TEXT.note && (
-          <p className="mt-8 text-xs text-gray-500 text-center">{ACCESS_TEXT.note}</p>
+          <p className="mt-8 text-xs text-gray-500 text-center whitespace-pre-line">
+            {ACCESS_TEXT.note}
+          </p>
         )}
       </div>
     </section>
