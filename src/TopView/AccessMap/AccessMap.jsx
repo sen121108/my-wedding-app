@@ -123,15 +123,29 @@ export default function AccessMap() {
                 {group.label}
               </h4>
               <ul className="mt-3 space-y-3">
-                {group.items.map((it, j) => (
-                  <li key={j} className="grid grid-cols-[1.5rem_1fr] gap-2">
-                    <div className="pt-0.5" aria-hidden>{it.icon || "•"}</div>
-                    <div>
-                      <div className="font-medium">{it.title}</div>
-                      {it.detail && <p className="text-sm text-gray-600 mt-0.5">{it.detail}</p>}
-                    </div>
-                  </li>
-                ))}
+                {group.items.map((it, j) => {
+                  const detailLink = it.detailniURL || it.detailUrl || it.detailURL || it.url;
+
+                  return (
+                    <li key={j} className="grid grid-cols-[1.5rem_1fr] gap-2">
+                      <div className="pt-0.5" aria-hidden>{it.icon || "•"}</div>
+                      <div>
+                        <div className="font-medium">{it.title}</div>
+                        {it.detail && <p className="text-sm text-gray-600 mt-0.5">{it.detail}</p>}
+                        {detailLink && (
+                          <a
+                            href={detailLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-1 inline-flex items-center text-sm font-medium text-blue-600 underline-offset-2 hover:underline"
+                          >
+                            {it.detailLabel || "詳細はこちら"}
+                          </a>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))}

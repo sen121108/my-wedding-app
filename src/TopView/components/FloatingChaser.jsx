@@ -2,17 +2,16 @@ import React, { useEffect, useState, useRef } from "react";
 
 export default function FloatingChaser() {
   // 座標はパーセンテージで扱う（0〜100）
-  const [girl, setGirl] = useState({ x: 95, y: 0, phase: 0 });
-  const [boy, setBoy] = useState({ x: 90, y: 0, phase: 0 });
+  const EDGE_INSET = 5;
+
+  const [girl, setGirl] = useState({ x: 95, y: EDGE_INSET, phase: 0 });
+  const [boy, setBoy] = useState({ x: 90, y: EDGE_INSET, phase: 0 });
 
   const girlRef = useRef(girl);
   const boyRef = useRef(boy);
-  const caughtRef = useRef(false); // 追いついてハート出したか
 
   const girlSpeed = 0.20;
-  const boySpeed = 0.80;
-
-  const [hearts, setHearts] = useState([]);
+  const boySpeed = 0.70;
 
   // フェーズごとの向きや transform を決める
   function transformFor(phase, facing) {
@@ -32,34 +31,41 @@ export default function FloatingChaser() {
   }
 
   // 周回移動（clockwise）: 0 top (x inc 0->100), 1 right (y inc 0->100), 2 bottom (x dec 100->0), 3 left (y dec 100->0)
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
   function moveCharacter(prev, speed) {
     let { x, y, phase } = prev;
+    const minPos = EDGE_INSET;
+    const maxPos = 100 - EDGE_INSET;
+
     switch (phase) {
       case 0:
-        x += speed;
-        if (x >= 100) {
-          x = 100;
+        x = clamp(x + speed, minPos, maxPos);
+        if (x >= maxPos) {
+          x = maxPos;
           phase = 1;
         }
         break;
       case 1:
-        y += speed;
-        if (y >= 100) {
-          y = 100;
+        y = clamp(y + speed, minPos, maxPos);
+        if (y >= maxPos) {
+          y = maxPos;
           phase = 2;
         }
         break;
       case 2:
-        x -= speed;
-        if (x <= 0) {
-          x = 0;
+        x = clamp(x - speed, minPos, maxPos);
+        if (x <= minPos) {
+          x = minPos;
           phase = 3;
         }
         break;
       case 3:
-        y -= speed;
-        if (y <= 0) {
-          y = 0;
+        y = clamp(y - speed, minPos, maxPos);
+        if (y <= minPos) {
+          y = minPos;
           phase = 0;
         }
         break;
@@ -69,12 +75,6 @@ export default function FloatingChaser() {
     return { x, y, phase };
   }
 
-  function distancePercent(a, b) {
-    const dx = a.x - b.x;
-    const dy = a.y - b.y;
-    return Math.sqrt(dx * dx + dy * dy);
-  }
-
   useEffect(() => {
     girlRef.current = girl;
     boyRef.current = boy;
@@ -82,7 +82,6 @@ export default function FloatingChaser() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // 直列に計算して最新値を参照する
       const nextGirl = moveCharacter(girlRef.current, girlSpeed);
       const nextBoy = moveCharacter(boyRef.current, boySpeed);
 
@@ -91,26 +90,6 @@ export default function FloatingChaser() {
 
       setGirl(nextGirl);
       setBoy(nextBoy);
-
-      const dist = distancePercent(nextBoy, nextGirl);
-      const catchThreshold = 4.5; // パーセンテージ距離の閾値（調整可）
-
-      if (dist < catchThreshold && !caughtRef.current) {
-        // 捕まえイベント（1回だけ発火）
-        caughtRef.current = true;
-        const id = Math.random().toString(36).slice(2, 9);
-        setHearts((h) => [...h, { id, x: nextGirl.x, y: nextGirl.y }]);
-
-        // 個別に消す
-        setTimeout(() => {
-          setHearts((h) => h.filter((it) => it.id !== id));
-        }, 1500);
-      }
-
-      // 捕獲中だったが十分離れたらリセットして次の捕獲を許可
-      if (caughtRef.current && dist > catchThreshold + 3) {
-        caughtRef.current = false;
-      }
     }, 16);
 
     return () => clearInterval(interval);
@@ -169,21 +148,6 @@ export default function FloatingChaser() {
           }`,
         }}
       />
-
-      {/* === 捕まえたときのハート === */}
-      {hearts.map((h) => (
-        <div
-          key={h.id}
-          className="fixed text-pink-500 text-4xl animate-ping z-[999]"
-          style={{
-            left: `${h.x}%`,
-            top: `${h.y}%`,
-            transform: "translate(-50%,-50%)",
-          }}
-        >
-          💗
-        </div>
-      ))}
     </>
   );
 }

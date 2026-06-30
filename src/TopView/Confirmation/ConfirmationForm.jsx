@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbyCnqeviwxkPVC3W97qircMBvIPQC63oT-Rj_KwSq2MYprWBj4oCpqtp3DZgLC_mYT0/exec";
+  "https://script.google.com/macros/s/AKfycbxRPS8D_MZoPPoHblxzvmT6OzDxcvH3ZCaDDwHaeOAlpVonE3ER4CyDH3j79witrNQ2Eg/exec";
+
+const SUBMITTED_DATA_KEY = "confirmationFormSubmitted";
 
 const initialForm = {
   name: "",
@@ -11,28 +13,39 @@ const initialForm = {
 };
 
 async function postToGas(payload) {
-  if (navigator.sendBeacon) {
-    const ok = navigator.sendBeacon(
-      GAS_URL,
-      new Blob([JSON.stringify(payload)], {
-        type: "text/plain;charset=utf-8",
-      })
-    );
-    if (ok) return;
-  }
-
   await fetch(GAS_URL, {
     method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(payload),
-    keepalive: true,
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    }
   });
 }
 
 export default function ConfirmationForm() {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState("idle");
+  const [submittedData, setSubmittedData] = useState(null);
+
+  useEffect(() => {
+    // マウント時にセッションストレージから送信済みデータを読み込む
+    const savedData = sessionStorage.getItem(SUBMITTED_DATA_KEY);
+    if (savedData) {
+      try {
+        const parsedData = JSON.parse(savedData);
+        setSubmittedData(parsedData);
+        // 送信済みデータをフォームの初期値として設定
+        setForm({
+          name: parsedData.name,
+          phone: parsedData.phone,
+          allergy: parsedData.allergy,
+          attendance: parsedData.attendance,
+        });
+      } catch {
+        // パース失敗時は無視
+      }
+    }
+  }, []);
 
   const isReady = useMemo(() => {
     return (
@@ -66,6 +79,11 @@ export default function ConfirmationForm() {
       };
 
       await postToGas(payload);
+      
+      // セッションストレージに送信データを保存
+      sessionStorage.setItem(SUBMITTED_DATA_KEY, JSON.stringify(payload));
+      setSubmittedData(payload);
+      
       setStatus("success");
       setForm(initialForm);
     } catch {
@@ -77,6 +95,12 @@ export default function ConfirmationForm() {
     <section className="w-full px-0 md:px-0">
       <div className="mx-auto w-full max-w-none border-y border-[#d8cdb8] bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(249,242,232,0.96))] px-4 py-12 shadow-[0_18px_55px_rgba(95,79,63,0.10)] backdrop-blur sm:px-6 md:px-8 md:py-16 lg:px-10">
         <div className="mx-auto max-w-4xl rounded-[32px] border border-[#e7dfd2] bg-white/70 p-6 shadow-[0_8px_30px_rgba(95,79,63,0.06)] sm:p-8 md:p-10">
+          {submittedData && (
+            <div className="mb-4 rounded-lg bg-emerald-50 p-3 border border-emerald-200 flex items-center justify-between">
+              <p className="text-sm font-medium text-emerald-700">✓ ご回答ありがとうございました</p>
+            </div>
+          )}
+          
           <div className="mb-6 flex flex-col items-center text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[#a08a6a]">
               RSVP
@@ -88,7 +112,7 @@ export default function ConfirmationForm() {
           </div>
 
           <p className="text-center text-sm leading-7 text-[#78685b] md:text-base">
-            7/30までにご回答ください。
+            7/30までにご回答をお願いします。<br />なお複数名でご出席の場合は代表者の方が一つずつ回答を送信ください
           </p>
 
           <form onSubmit={handleSubmit} className="mt-7 space-y-4">

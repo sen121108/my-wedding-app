@@ -11,7 +11,7 @@ export const VENUE = {
   name: "CHARMANT SCENA TOKYO",
   addressJa: "東京都渋谷区神宮前4-5-6",
   // 任意: 建物名やフロアなど
-  addressLine2: "3F CRYSTAL CHAPEL / 1F NOVEL CRYSTAL",
+  addressLine2: "3F CRYSTAL CHAPEL / B1F NOVEL CRYSTAL",
   // Google Maps の埋め込みURL（共有→地図を埋め込む→URL）
   // 既にお持ちなら差し替え、未確定なら query から自動生成も可
   mapEmbedSrc:
@@ -30,8 +30,8 @@ export const ACCESS_ROUTES = [
     label: "電車・徒歩",
     items: [
       {
-        title: "表参道駅 A2出口 から徒歩7分",
-        detail: "表参道交差点を原宿方面へ。Apple表参道を右折し、直進。",
+        title: "表参道駅 A2出口 から徒歩3分程度",
+        detailniURL: "https://wedding.escrit.jp/place/tokyo.charmantscena/access/",
         icon: "🚇",
       },
     ],
