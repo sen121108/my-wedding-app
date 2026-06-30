@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 export default function FloatingChaser() {
   // 座標はパーセンテージで扱う（0〜100）
-  const EDGE_INSET = 5;
+  const EDGE_INSET = 1;
 
   const [girl, setGirl] = useState({ x: 95, y: EDGE_INSET, phase: 0 });
   const [boy, setBoy] = useState({ x: 90, y: EDGE_INSET, phase: 0 });
