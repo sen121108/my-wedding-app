@@ -230,10 +230,10 @@ export default function ConfirmationForm() {
               </button>
 
               {status === "error" && (
-                <p className="text-sm text-red-600">送信に失敗しました。時間をおいて再度お試しください。</p>
+                <p className="text-sm text-red-600">送信に失敗しました　時間をおいて再度お試しください</p>
               )}
               {status === "success" && (
-                <p className="text-sm text-emerald-700">ありがとうございます。内容を受け付けました。</p>
+                <p className="text-sm text-emerald-700">ご回答ありがとうございます！内容を受け付けました</p>
               )}
             </div>
           </form>
