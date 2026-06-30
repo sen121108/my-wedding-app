@@ -4,7 +4,6 @@
 export const SCHEDULE_TEXT = {
   title: "Schedule",
   lead: "受付開始からの流れをご案内します",
-  note: "時間は目安です。進行により前後する場合があります",
 };
 
 // タイムラインの本体データ
@@ -16,7 +15,7 @@ export const SCHEDULE_ITEMS = [
   {
     time: "14:00",
     title: "挙式",
-    detail: "※本時間までに着替え含めた準備を全てお済ませください",
+    detail: "※本時間までに全ての準備をお済ませください",
   },
   {
     time: "14:45",

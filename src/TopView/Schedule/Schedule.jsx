@@ -82,7 +82,7 @@ function TimelineItem({ time, title, detail, highlight = false, isLast }) {
 
         {/* 詳細文 */}
         {detail && (
-          <p className="mt-2 ml-[5.5rem] md:ml-[6.5rem] text-sm md:text-base text-gray-400 leading-relaxed">
+          <p className="mt-2 text-sm md:text-base text-gray-400 leading-relaxed">
             {detail}
           </p>
         )}

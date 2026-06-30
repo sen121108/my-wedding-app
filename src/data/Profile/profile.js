@@ -7,14 +7,14 @@ export const PAGE_TEXT = {
 
 export const bride = {
   photo: "/image/profile/bride.jpg",
-  bio: "好きなもの・好きなことが沢山あります！おしゃべりもだいすきです🎀",
+  bio: "好きなもの・好きなことが沢山あります！🎀おしゃべりもだいすきです🤍",
   links: [{ label: "Instagram", href: "https://www.instagram.com/tkk__0426/" }],
   tags: ["1999/4/26", "秋田県出身", "保育士",],
 };
 
 export const groom = {
   photo: "/image/profile/groom.jpg",
-  bio: "日々の楽しみはチョコレート🍫休日は愛猫と遊びながらのんびり過ごしています🐈",
+  bio: "日々の楽しみはチョコレート🍫休日は猫と遊びながらのんびり過ごしています🐈",
   links: [{ label: "Instagram", href: "https://www.instagram.com/kazzu__00/" }],
   tags: ["2000/11/8", "愛知県出身", "コンサルタント", ],
 };
